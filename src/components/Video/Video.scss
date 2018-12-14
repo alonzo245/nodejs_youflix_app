@@ -6,8 +6,9 @@
   height: 350px;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
+
   @media (min-width: 1200px) {
-    & {
+    &{
       height: 390px;
     }
   }
@@ -20,7 +21,8 @@
     width: 95%;
     z-index: 6;
     height: 400px;
-
+    color: white;
+    
     @media (min-width: 1200px) {
       & {
         height: 440px;
@@ -28,13 +30,10 @@
     }
   }
 
-  
-  &:hover ~ .Video{
+  &:hover ~ .Video {
     opacity: 0.3;
-   
   }
-  
-  
+
   &:hover > .VideoImage {
     color: green;
     transform: scale(1.5);
@@ -48,19 +47,37 @@
     height: 100%;
     box-shadow: inset 0px -183px 122px -28px black;
     display: flex;
-    justify-content: center;
+    flex-direction: column-reverse;
 
-    &:hover {
-      color: white;
-    }
-
-    .title {
+    .Title {
       text-align: right;
       direction: rtl;
-      align-self: flex-end;
       padding: 10px;
-      max-width: 210px;
+      width: 200px;
       font-size: 12px;
+      margin-bottom: 30px;
+      height: 60px;
+      align-self: flex;
+      opacity: 1;
+      transition: all 0.3s ease-in-out;
+    }
+    
+    .Date {
+      display: inline-block;
+      text-align: left;
+      margin-bottom: 6px;
+      margin-left: 20px;
+      width: 94%;
+      font-size: 12px;
+      height: 16px;
+      align-self: flex-end;
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:hover > .Date, &:hover > .Title {
+      opacity: 1;
+      transition: all 0.3s ease-in-out;
     }
   }
 
