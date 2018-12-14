@@ -8,7 +8,7 @@
   cursor: pointer;
 
   @media (min-width: 1200px) {
-    &{
+    & {
       height: 390px;
     }
   }
@@ -22,7 +22,7 @@
     z-index: 6;
     height: 400px;
     color: white;
-    
+
     @media (min-width: 1200px) {
       & {
         height: 440px;
@@ -52,16 +52,16 @@
     .Title {
       text-align: right;
       direction: rtl;
-      padding: 10px;
-      width: 200px;
+      padding: 19px 16px;
+      width: 100%;
       font-size: 12px;
       margin-bottom: 30px;
       height: 60px;
-      align-self: flex;
       opacity: 1;
+      -webkit-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
     }
-    
+
     .Date {
       display: inline-block;
       text-align: left;
@@ -75,7 +75,8 @@
       transition: all 0.3s ease-in-out;
     }
 
-    &:hover > .Date, &:hover > .Title {
+    &:hover > .Date,
+    &:hover > .Title {
       opacity: 1;
       transition: all 0.3s ease-in-out;
     }
