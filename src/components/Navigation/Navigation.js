@@ -10,11 +10,11 @@ const links = [
 ];
 
 const Navigation = (props) => (
-  <div id="navigation" class="Navigation">
+  <div id="navigation" className="Navigation">
     <nav>
     <ul>
-      {links.map( link => (
-        <NavigationItem href={link.href} name={link.name} />
+      {links.map( (link, index) => (
+        <NavigationItem key={index} href={link.href} name={link.name} />
       ))}
     </ul>
     </nav>

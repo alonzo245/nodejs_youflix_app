@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
+import { GoClock } from 'react-icons/go';
+import { MdPlayCircleOutline , MdInfoOutline} from 'react-icons/md';
 import './Video.scss';
 
 class Video extends Component {
@@ -20,6 +22,7 @@ class Video extends Component {
   );
 
   render() {
+
     let backgroundStyle = {
       backgroundImage: 'url(' + this.props.videoData.snippet.thumbnails.standard.url + ')',
     };
@@ -45,12 +48,16 @@ class Video extends Component {
         <div className="VideoPlayerWrapper">
           {this.state.videoImageVisibile ? null : <iframe src={this.getIframe(this.props.videoData.contentDetails.upload.videoId)} title="iframe" />}
         </div>
-        <div className={classes} style={backgroundStyle}></div>
+        <div className={classes} style={backgroundStyle}>
+          <MdPlayCircleOutline className="PlayerIcon" />
+        </div>
         <div className="VideoData">
-          <div className="Title">{this.props.videoData.snippet.title}
+          <div className="Title">
+          <MdInfoOutline  className="Info"/>
+          {this.props.videoData.snippet.title}
           </div>
           <div className="Date">
-          Published: <Moment format="DD.MM.YYYY" date={this.props.videoData.snippet.publishedAt} />
+            <GoClock className="GoClock" /> Published: <Moment format="DD.MM.YYYY" date={this.props.videoData.snippet.publishedAt} />
           </div>
           {/* desc: {this.props.videoData.snippet.description} <br/> * */}
           {/* url: {`https://www.youtube.com/watch?v=${this.props.videoData.contentDetails.upload.videoId}`} */}
