@@ -1,0 +1,25 @@
+.VideoBuilder{
+  display: grid;
+  grid-row-gap:15px;
+  grid-column-gap:10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
+  
+  @media (min-width: 576px) {
+    
+  }
+  
+  @media (min-width: 768px) {
+    
+  }
+  
+  @media (min-width: 992px) {
+    
+  }
+  
+  @media (min-width: 1200px) {
+    &{
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr) ) ;
+    }
+  }
+}
+
