@@ -1,0 +1,17 @@
+.Header {
+  background: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
+  display: flex;
+  padding: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  box-sizing: border-box;
+  z-index: 5;
+
+  .Logo {
+    margin-right: 10px;
+    transition: margin 0.125s ease;
+  }
+}

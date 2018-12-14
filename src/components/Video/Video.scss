@@ -13,7 +13,7 @@
   }
 
   &:hover {
-    box-shadow: 0px 0px 25px grey;
+    box-shadow: 0px 0px 25px rgb(66, 66, 66);
     transition: all 0.3s ease-in-out;
     transform-origin: center;
     transform: scale(1.05);
@@ -28,6 +28,13 @@
     }
   }
 
+  
+  &:hover ~ .Video{
+    opacity: 0.3;
+   
+  }
+  
+  
   &:hover > .VideoImage {
     color: green;
     transform: scale(1.5);
