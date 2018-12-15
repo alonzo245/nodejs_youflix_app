@@ -6,6 +6,7 @@ import axios from '../../axios-api';
 import './VideoBuilder.scss';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import VideoPlayerSlider from '../../components/VideoPlayerSlider/VideoPlayerSlider';
+import VideosJsonData from '../../youtube.api.js';
 
 class VideoBuilder extends Component {
   state = {
@@ -13,7 +14,8 @@ class VideoBuilder extends Component {
     isLoaded: false,
     items: [],
     blackScreen: false,
-    videoPlayerSliderOpen: false
+    videoPlayerSliderOpen: false,
+    currentVideo: null
   };
 
   componentWillMount() {
@@ -29,22 +31,37 @@ class VideoBuilder extends Component {
         });
       })
       .catch(error => {
-        console.log(error);
-        this.setState({
-          isLoaded: true,
-          error
-        });
+        if (error.response.status === 404) {
+          // console.log('error',error.request);
+          console.log('error', error.response.status);
+          // console.log('error',error.config);
+          let updatedData = VideosJsonData.items;
+          this.setState({
+            isLoaded: true,
+            items: updatedData
+          });
+        } else {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
       });
   }
 
   togglePlayerHandler = (data = null) => {
-    if (data) {
-      console.log('data',)
+
+    let currentUpdatedVideo = null;
+    if (this.state.items[data.videoIndex]) {
+      // console.log('data', this.state.items[data.videoIndex])
+      currentUpdatedVideo = this.state.items[data.videoIndex];
     }
-    // console.log('aaa')
+
     this.setState({
+      ...this.state,
       blackScreen: !this.state.blackScreen,
-      videoPlayerSliderOpen: !this.state.videoPlayerSliderOpen
+      videoPlayerSliderOpen: !this.state.videoPlayerSliderOpen,
+      currentVideo: currentUpdatedVideo
     });
   }
 
@@ -53,19 +70,24 @@ class VideoBuilder extends Component {
 
     if (error) {
       return <div>Error: {error.message}</div>;
-    } 
+    }
     else if (!isLoaded) {
       return <Spinner />;
     }
     else {
       return (
         <React.Fragment>
-          <VideoPlayerSlider  togglePlayer={this.togglePlayerHandler} active={this.state.videoPlayerSliderOpen}/>
+          <VideoPlayerSlider
+            togglePlayer={this.togglePlayerHandler}
+            active={this.state.videoPlayerSliderOpen}
+            currentVideoData={this.state.currentVideo}
+          />
           <BlackScreen active={this.state.blackScreen} />
           <div className="VideoBuilder">
             {items.map((data, index) => (
               <Video
                 key={index}
+                videoId={index}
                 videoData={data}
                 togglePlayer={this.togglePlayerHandler}
               />

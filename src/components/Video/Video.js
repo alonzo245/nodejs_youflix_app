@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
 import { GoClock } from 'react-icons/go';
-import { MdPlayCircleOutline , MdInfoOutline} from 'react-icons/md';
+import { MdPlayCircleOutline, MdInfoOutline } from 'react-icons/md';
+import Iframe from '../Iframe/Iframe';
 import './Video.scss';
 
 class Video extends Component {
-  state = {
-    videoImageVisibile: true
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      videoImageVisibile: true
+    };
+
+    // console.log('props',this.props)
+  }
 
   overVideoHandler = (data = null) => {
     setTimeout(() => {
@@ -16,10 +22,6 @@ class Video extends Component {
 
     if (data) { }
   }
-
-  getIframe = (url) => (
-    `https://www.youtube.com/embed/${url}?autoplay=1&rel=0&modestbranding=1&autohide=1&mute=1&showinfo=0&controls=0`
-  );
 
   render() {
 
@@ -41,26 +43,34 @@ class Video extends Component {
         onMouseEnter={() => { this.overVideoHandler(this.props.videoData); }}
         onMouseLeave={() => { this.overVideoHandler(this.props.videoData); }}
         onClick={() => {
-          this.props.togglePlayer(this.props.videoData.contentDetails.upload.videoId);
+          this.props.togglePlayer({
+            videoIndex: this.props.videoId,
+            videoId: this.props.videoData.contentDetails.upload.videoId
+          });
 
         }}
       >
         <div className="VideoPlayerWrapper">
-          {this.state.videoImageVisibile ? null : <iframe src={this.getIframe(this.props.videoData.contentDetails.upload.videoId)} title="iframe" />}
+          {
+            this.state.videoImageVisibile ? null : <Iframe
+              src={this.props.videoData.contentDetails.upload.videoId}
+              title="video"
+              mute={false}
+              autoplay={true}
+            />
+          }
         </div>
         <div className={classes} style={backgroundStyle}>
           <MdPlayCircleOutline className="PlayerIcon" />
         </div>
         <div className="VideoData">
           <div className="Title">
-          <MdInfoOutline  className="Info"/>
-          {this.props.videoData.snippet.title}
+            <MdInfoOutline className="Info" />
+            {this.props.videoData.snippet.title}
           </div>
           <div className="Date">
             <GoClock className="GoClock" /> Published: <Moment format="DD.MM.YYYY" date={this.props.videoData.snippet.publishedAt} />
           </div>
-          {/* desc: {this.props.videoData.snippet.description} <br/> * */}
-          {/* url: {`https://www.youtube.com/watch?v=${this.props.videoData.contentDetails.upload.videoId}`} */}
           <br />
         </div>
 
