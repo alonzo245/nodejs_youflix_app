@@ -29,7 +29,9 @@ const VideoPlayerSlider = (props) => {
 
 
           <div className="Description">
+          <div className="TextWrapper">
             {props.currentVideoData.snippet.description}
+          </div>
           </div>
         </div>
       </React.Fragment>

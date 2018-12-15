@@ -42,6 +42,7 @@
     position: absolute;
     top: 1%;
     left: 1%;
+    z-index: 2;
 
     & :hover {
       color: red;
@@ -60,18 +61,25 @@
     text-align: right;
     box-sizing: border-box;
     padding: 0px 21px;
+    width: 97%;
+    padding: 15px 3%;
+
+    .TextWrapper {
+      margin: 0 auto;
+      max-width: 1000px;
+    }
 
     &::-webkit-scrollbar {
       width: 8px;
     }
-  
+
     /* Track */
     &::-webkit-scrollbar-track {
       -webkit-border-radius: 10px;
       border-radius: 10px;
       background: rgb(43, 43, 43);
     }
-  
+
     /* Handle */
     &::-webkit-scrollbar-thumb {
       opacity: 0.1;
