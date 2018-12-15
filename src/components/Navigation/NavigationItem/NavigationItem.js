@@ -4,7 +4,7 @@ import './NavigationItem.scss';
 
 const NavigationItem = (props) => (
   <li>
-    <NavLink className="Link" to={props.href}>
+    <NavLink activeClassName="Active" className="Link" to={props.href} exact={props.exact}>
       {props.name}
     </NavLink>
   </li>

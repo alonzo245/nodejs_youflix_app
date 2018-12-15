@@ -5,11 +5,11 @@ import SearchInput from '../UI/SearchInput/SearchInput';
 import Logo from './images/logo.png';
 
 const Header = (props) => (
-  <div className="Header">
+  <header className="Header">
   <img src={Logo} alt="YOUFLIX"/>
     <Navigation />
     <SearchInput />
-  </div>
+  </header>
 );
 
 export default Header;

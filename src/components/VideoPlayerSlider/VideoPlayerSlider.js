@@ -12,9 +12,8 @@ const VideoPlayerSlider = (props) => {
 
   let videoDescription = null;
   if (props.currentVideoData) {
-    videoDescription = props.currentVideoData.snippet.description.split('\n').map(i => {
-      return <p>{i}</p>
-    });
+    videoDescription = props.currentVideoData.snippet.description.split('\n').map( (line,i) =>  <p key={i} >{line}</p>
+    );
   }
 
   if (props.currentVideoData) {
