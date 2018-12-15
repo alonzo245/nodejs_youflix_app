@@ -24,12 +24,24 @@
   //   grid-row: 1/4;
   // }
 
+  iframe {
+    width: 100%;
+    height: 62%;
+    border: none;
+    position: absolute;
+    top: 8%;
+    left: 0;
+  }
 
   .BackWindowPlayer {
     color: white;
     font-size: 38px;
+    -webkit-transition: background-color 0.1s linear, color 1s linear;
     transition: background-color 0.1s linear, color 1s linear;
     cursor: pointer;
+    position: absolute;
+    top: 1%;
+    left: 1%;
 
     & :hover {
       color: red;
@@ -37,8 +49,36 @@
     }
   }
 
-  .Description{
-    color:white;
+  .Description {
+    color: #dbdbdb;
+    position: absolute;
+    bottom: 1%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 28%;
+    direction: rtl;
+    text-align: right;
+    box-sizing: border-box;
+    padding: 0px 21px;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+  
+    /* Track */
+    &::-webkit-scrollbar-track {
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      background: rgb(43, 43, 43);
+    }
+  
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      opacity: 0.1;
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      background: rgba(255, 0, 0, 0.8);
+    }
   }
 }
 

@@ -53,7 +53,7 @@ class VideoBuilder extends Component {
 
     let currentUpdatedVideo = null;
     if (this.state.items[data.videoIndex]) {
-      // console.log('data', this.state.items[data.videoIndex])
+      this.props.toggleScroll();
       currentUpdatedVideo = this.state.items[data.videoIndex];
     }
 

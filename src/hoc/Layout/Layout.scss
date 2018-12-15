@@ -1,3 +1,8 @@
 .Layout{
   margin: auto 25px;
+  width: 99%;
+
+  &.Fixed{
+    position: fixed;
+  }
 }
