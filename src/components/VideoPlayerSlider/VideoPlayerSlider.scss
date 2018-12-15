@@ -67,6 +67,10 @@
     .TextWrapper {
       margin: 0 auto;
       max-width: 1000px;
+
+      p {
+        margin: 2px 0px;
+      }
     }
 
     &::-webkit-scrollbar {

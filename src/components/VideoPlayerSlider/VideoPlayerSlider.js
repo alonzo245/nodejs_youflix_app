@@ -10,6 +10,12 @@ const VideoPlayerSlider = (props) => {
     attachedClasses = ["SideDrawer", "Open"];
   }
 
+  let videoDescription = null;
+  if (props.currentVideoData) {
+    videoDescription = props.currentVideoData.snippet.description.split('\n').map(i => {
+      return <p>{i}</p>
+    });
+  }
 
   if (props.currentVideoData) {
     return (
@@ -29,9 +35,7 @@ const VideoPlayerSlider = (props) => {
 
 
           <div className="Description">
-          <div className="TextWrapper">
-            {props.currentVideoData.snippet.description}
-          </div>
+            <div className="TextWrapper">{videoDescription}</div>
           </div>
         </div>
       </React.Fragment>
