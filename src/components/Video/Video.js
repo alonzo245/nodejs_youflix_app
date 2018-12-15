@@ -55,8 +55,9 @@ class Video extends Component {
             this.state.videoImageVisibile ? null : <Iframe
               src={this.props.videoData.contentDetails.upload.videoId}
               title="video"
-              mute={false}
+              mute={true}
               autoplay={true}
+              controls={false}
             />
           }
         </div>
