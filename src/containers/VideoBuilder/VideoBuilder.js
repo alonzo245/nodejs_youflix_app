@@ -13,7 +13,7 @@ import SearchInput from '../../components/UI/SearchInput/SearchInput';
 class VideoBuilder extends Component {
   state = {
     blackScreen: false,
-    videoPlayerSliderOpen: false,
+    videoPlayerSliderOpen: false
   };
 
   componentWillMount() {
@@ -21,7 +21,6 @@ class VideoBuilder extends Component {
   }
 
   togglePlayerHandler = (data = null) => {
-    
     this.props.toggleLayoutScroll();
     this.props.onSetCurrentVideo(this.props.videosList[data.videoIndex]);
 
@@ -31,6 +30,23 @@ class VideoBuilder extends Component {
       videoPlayerSliderOpen: !this.state.videoPlayerSliderOpen
     });
   }
+
+  filterListHandler = (event) => {
+    let inputEmpty = true;
+    let updatedList = { ...this.props.searchVideosList };
+    
+    if (event.target.value) {
+      inputEmpty = false;
+      updatedList = this.props.videosList.filter((video) => {
+        return video.snippet.title.toLowerCase().search(
+          event.target.value.toLowerCase()) !== -1;
+      });
+    }
+    
+    this.props.onSearchVideo(updatedList, inputEmpty);
+    
+  }
+
 
   render() {
     if (!this.props.videosList) {
@@ -45,16 +61,16 @@ class VideoBuilder extends Component {
             currentVideoData={this.props.currentVideo}
           />
           <BlackScreen active={this.state.blackScreen} />
-          <SearchInput />
+          <SearchInput filterList={this.filterListHandler} />
           <div className="VideoBuilder">
-            {this.props.videosList.map((data, index) => (
-              <Video
+            {this.props.videosList.map((data, index) => {
+              return <Video
                 key={index}
                 videoId={index}
                 videoData={data}
                 togglePlayer={this.togglePlayerHandler}
               />
-            ))}
+            })}
           </div>
         </React.Fragment>
       );
@@ -65,7 +81,8 @@ class VideoBuilder extends Component {
 const mapStateToProps = state => {
   return {
     videosList: state.videoBuilder.videos,
-    currentVideo: state.videoBuilder.currentVideo
+    currentVideo: state.videoBuilder.currentVideo,
+    searchVideosList: state.videoBuilder.searchVideosList
   }
 }
 
@@ -73,6 +90,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onInitVideos: () => dispatch(actions.initVideos()),
     onSetCurrentVideo: (videoId) => dispatch(actions.setCurrentVideo(videoId)),
+    onSearchVideo: (videos, inputEmpty) => dispatch(actions.searchVideo(videos, inputEmpty))
   }
 }
 

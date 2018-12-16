@@ -2,34 +2,45 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../../utils/utility';
 
 const setCurrentVideo = (state, action) => {
-
-  // console.log('state', state);
-  // console.log('action', action);
-
   return updateObject(state, {
     currentVideo: action.currentVideo
   })
 };
 
-const fetchVideosFailed = (state, action) => {
+const fetchVideosFailed = (state) => {
   return updateObject(state, { error: true });
 };
 
 const setVideos = (state, action) => {
-  // console.log('state', state);
-  // console.log('action', action);
   return updateObject(state, {
-    videos: action.videos
+    videos: action.videos,
+    searchVideosList: action.videos
   })
 };
 
+const filterVideoList = (state, action) => {
+  if(!action.videos.length){
+    console.log('no res',)
+    action.videos = state.searchVideosList
+  }
+
+  return updateObject(state, {
+    videos: action.videos
+  });
+};
+
 const initialState = {
-  currentVideo: null
+  videosList: {},
+  searchVideosList: [],
+  currentVideo: null,
 };
 
 // actions switcher
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.FETCH_VIDEO_FILTER:
+      return filterVideoList(state, action)
+
     case actionTypes.SET_CURRENT_VIDEO:
       return setCurrentVideo(state, action)
 
