@@ -1,31 +1,34 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import { connect } from 'react-redux';
+import * as actions from './store/actions/index';
+
 import Layout from './hoc/Layout/Layout';
 import VideoBuilder from './containers/VideoBuilder/VideoBuilder';
 import About from './containers/About/About';
 import './App.scss';
 
 class App extends Component {
-  state = {
-    layoutScrollToggler: false,
-  }
+  // state = {
+  //   layoutScrollToggler: false,
+  // }
 
-  toggleLayotScrollHandler = () => {
-    this.setState({
-      ...this.state,
-      layoutScrollToggler: !this.state.layoutScrollToggler
-    });
-  }
+  // toggleLayotScrollHandler = () => {
+  //   this.setState({
+  //     ...this.state,
+  //     layoutScrollToggler: !this.props.layoutScrollToggler
+  //   });
+  // }
 
   render() {
+    console.log(this.props.layoutScrollToggler)
     return (
-      <BrowserRouter >
-        <Layout togglePosition={this.state.layoutScrollToggler}>
+        <Layout togglePosition={this.props.layoutScrollToggler}>
           <Switch>
             <Route
               exact
               path='/'
-              render={() => <VideoBuilder toggleScroll={this.toggleLayotScrollHandler} />}
+              render={() => <VideoBuilder toggleLayoutScroll={this.props.onToggleLayoutScroll} />}
             />
             <Route
               path='/about'
@@ -34,9 +37,21 @@ class App extends Component {
             {this.props.children}
           </Switch>
         </Layout>
-      </BrowserRouter >
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    layoutScrollToggler: state.app.layoutScrollToggler
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onToggleLayoutScroll: () => dispatch(actions.toggleLayoutScroll())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
