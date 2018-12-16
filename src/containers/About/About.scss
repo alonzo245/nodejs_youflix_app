@@ -1,0 +1,37 @@
+.About{
+  margin-top: 95px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-template-row: 1fr 1fr 1fr 1fr ;
+  grid-template-areas:  "box box1 . box4"
+                        "box box2 . box4"
+                        "box box3 . box4";
+
+  .Box{
+    background-color: rgb(172, 17, 0);
+    grid-area: box;
+  }
+
+  .Box1{
+    background-color: wheat;
+    grid-area: box1;
+    height: 300px;
+  }
+
+  .Box2{
+    background-color: pink;
+    grid-area: box2;
+    height: 300px;
+  }
+
+  .Box3{
+    background-color: green;
+    grid-area: box3;
+  }
+
+  .Box4{
+    background-color: darkblue;
+    grid-area: box4;
+  }
+}
