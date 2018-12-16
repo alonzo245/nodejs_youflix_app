@@ -34,7 +34,7 @@ class VideoBuilder extends Component {
   filterListHandler = (event) => {
     let inputEmpty = true;
     let updatedList = { ...this.props.searchVideosList };
-    
+
     if (event.target.value) {
       inputEmpty = false;
       updatedList = this.props.videosList.filter((video) => {
@@ -42,9 +42,9 @@ class VideoBuilder extends Component {
           event.target.value.toLowerCase()) !== -1;
       });
     }
-    
+
     this.props.onSearchVideo(updatedList, inputEmpty);
-    
+
   }
 
 
@@ -62,6 +62,19 @@ class VideoBuilder extends Component {
           />
           <BlackScreen active={this.state.blackScreen} />
           <SearchInput filterList={this.filterListHandler} />
+          <div className="VideoMenu">
+            <ul>
+              <li>
+                Alon's Videos
+              </li>
+              <li>
+                Most Popular
+              </li>
+              <li>
+                Tech
+              </li>
+            </ul>
+          </div>
           <div className="VideoBuilder">
             {this.props.videosList.map((data, index) => {
               return <Video

@@ -1,8 +1,40 @@
-.Layout{
+.Layout {
   margin: 0 auto;
   width: 99%;
 
-  &.Fixed{
+  &.Fixed {
     position: fixed;
+  }
+
+  .VideoMenu {
+    display: flex;
+    margin-top: 16px;
+    height: 34px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    & ul {
+      display: flex;
+      height: 32px;
+      margin-bottom: 5px;
+      align-items: center;
+      padding: 0 10px;
+      list-style: none;
+      & li {
+        color: white;
+        cursor: pointer;
+        text-decoration: underline;
+        color: white;
+        font-weight: 400;
+        padding: 7px 10px;
+        font-size: 14px;
+        -webkit-transition: background 0.125s ease;
+        transition: background 0.125s ease;
+        border-radius: 6px;
+        margin: 0 5px;
+        background-color: black;
+      }
+    }
   }
 }

@@ -40,16 +40,17 @@
   .Description {
     color: #dbdbdb;
     position: absolute;
-    bottom: 1%;
+    bottom: 0%;
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 28%;
+    height: 30%;
     direction: rtl;
     text-align: right;
     box-sizing: border-box;
     padding: 0px 21px;
-    width: 97%;
+    width: 100%;
     padding: 15px 3%;
+    background-image: linear-gradient(180deg, rgba(39, 39, 39, 0.6), rgb(0, 0, 0));
 
     .TextWrapper {
       margin: 0 auto;

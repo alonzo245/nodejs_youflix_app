@@ -1,27 +1,23 @@
-.VideoBuilder{
+.VideoBuilder {
   display: grid;
-  grid-row-gap:15px;
-  grid-column-gap:10px;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
-  margin: 33px 0px 0px 22px;
+  grid-row-gap: 15px;
+  grid-column-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  margin: 18px 0px 0px 22px;
   width: 99%;
-  
+
   @media (min-width: 576px) {
-    
   }
-  
+
   @media (min-width: 768px) {
-    
   }
-  
+
   @media (min-width: 992px) {
-    
   }
-  
+
   @media (min-width: 1200px) {
-    &{
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr) ) ;
+    & {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     }
   }
 }
-
