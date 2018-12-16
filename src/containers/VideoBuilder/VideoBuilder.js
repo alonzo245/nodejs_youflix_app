@@ -8,6 +8,7 @@ import axios from '../../axios-api';
 import './VideoBuilder.scss';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import VideoPlayerSlider from '../../components/VideoPlayerSlider/VideoPlayerSlider';
+import SearchInput from '../../components/UI/SearchInput/SearchInput';
 
 class VideoBuilder extends Component {
   state = {
@@ -44,6 +45,7 @@ class VideoBuilder extends Component {
             currentVideoData={this.props.currentVideo}
           />
           <BlackScreen active={this.state.blackScreen} />
+          <SearchInput />
           <div className="VideoBuilder">
             {this.props.videosList.map((data, index) => (
               <Video
