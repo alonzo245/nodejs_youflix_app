@@ -22,16 +22,14 @@ const rooteReducers = combineReducers({
 })
 
 // init a store
-const store = createStore( rooteReducers, composeEnhancers(
+const store = createStore(rooteReducers, composeEnhancers(
   // for async calls
   applyMiddleware(thunk)
 ));
 
 const app = (
   <Provider store={store}>
-    <BrowserRouter >
-      <App />
-    </BrowserRouter >
+    <App />
   </Provider>
 );
 

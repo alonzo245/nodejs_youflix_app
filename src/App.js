@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
 
@@ -9,20 +9,11 @@ import About from './containers/About/About';
 import './App.scss';
 
 class App extends Component {
-  // state = {
-  //   layoutScrollToggler: false,
-  // }
-
-  // toggleLayotScrollHandler = () => {
-  //   this.setState({
-  //     ...this.state,
-  //     layoutScrollToggler: !this.props.layoutScrollToggler
-  //   });
-  // }
 
   render() {
     console.log(this.props.layoutScrollToggler)
     return (
+      <BrowserRouter >
         <Layout togglePosition={this.props.layoutScrollToggler}>
           <Switch>
             <Route
@@ -37,6 +28,7 @@ class App extends Component {
             {this.props.children}
           </Switch>
         </Layout>
+      </BrowserRouter >
     );
   }
 }
