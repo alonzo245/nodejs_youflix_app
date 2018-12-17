@@ -192,7 +192,7 @@
 
     &:hover > .VideoImage {
       color: green;
-      transform: scale(1.2);
+      transform: scale(1.6);
       transition: all 0.3s ease-in-out;
 
       
@@ -203,7 +203,7 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      box-shadow: inset 0px -183px 122px -107px black;
+      box-shadow: inset 0px -190px 122px -107px black;
       display: flex;
       flex-direction: column-reverse;
 
@@ -260,14 +260,16 @@
 
     .VideoImage {
       z-index: 4;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      transition: all 0.3s ease-in-out;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center -15px;
-      transform: scale(1.2);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 0px;
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4);
     }
 
     .VideoPlayerWrapper {
