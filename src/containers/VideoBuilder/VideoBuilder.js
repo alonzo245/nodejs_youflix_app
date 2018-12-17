@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import Video from '../../components/Video/Video';
 import BlackScreen from '../../components/UI/BlackScreen/BlackScreen';
-import axios from '../../axios-api';
+import axios from '../../axios';
 import './VideoBuilder.scss';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import VideoPlayerSlider from '../../components/VideoPlayerSlider/VideoPlayerSlider';
