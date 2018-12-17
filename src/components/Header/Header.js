@@ -11,7 +11,7 @@ const Header = (props) => (
       <Navigation />
     </div>
     <div className="">
-      <Toggle {...props} />
+      <Toggle toggleTheme={props.toggleTheme} />
       {/* Ver.1.0 */}
     </div>
   </header>

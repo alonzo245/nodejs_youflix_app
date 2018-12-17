@@ -29,9 +29,21 @@ export const fetchVideosFailed = () => {
   };
 };
 
-export const initVideos = () => {
+export const initVideos = (category) => {
   return dispatch => {
-    axios.get('/youtube.api.json')
+
+    let apiUrl;
+    switch(category) {
+      default:
+      case 'mostPopular':
+      apiUrl = '/mostpopular.api.json';
+      break;
+      case 'alon':
+      apiUrl = '/youtube.api.json';
+      break;
+    }
+
+    axios.get(apiUrl)
       .then(response => {
         dispatch(setVideos(response.data.items));
       })

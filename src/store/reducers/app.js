@@ -3,7 +3,6 @@ import { updateObject } from '../../utils/utility';
 
 // actions
 const toggleLayoutScroll = (state, action) => {
-console.log(action.layoutScrollToggler)
   return updateObject(state, {
     layoutScrollToggler: !state.layoutScrollToggler
   })

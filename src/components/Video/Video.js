@@ -37,15 +37,23 @@ class Video extends Component {
     Object.keys(this.props.videoData.snippet)
       .map((value, index) => this.props.videoData.snippet[index]);
 
-    // console.log('zzzz');
+
+    let videoId = null;
+    if ('upload' in this.props.videoData.contentDetails) {
+      videoId = this.props.videoData.contentDetails.upload.videoId;
+    } else {
+      videoId = this.props.videoData.id
+    }
+
     return (
+
       <div className="Video"
         onMouseEnter={() => { this.overVideoHandler(this.props.videoData); }}
         onMouseLeave={() => { this.overVideoHandler(this.props.videoData); }}
         onClick={() => {
           this.props.togglePlayer({
             videoIndex: this.props.videoId,
-            videoId: this.props.videoData.contentDetails.upload.videoId
+            videoId: videoId
           });
 
         }}
@@ -53,7 +61,7 @@ class Video extends Component {
         <div className="VideoPlayerWrapper">
           {
             this.state.videoImageVisibile ? null : <Iframe
-              src={this.props.videoData.contentDetails.upload.videoId}
+              src={videoId}
               title="video"
               mute={true}
               autoplay={true}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
+import classNames from 'classnames';
 
 import Video from '../../components/Video/Video';
 import BlackScreen from '../../components/UI/BlackScreen/BlackScreen';
@@ -13,7 +14,8 @@ import SearchInput from '../../components/UI/SearchInput/SearchInput';
 class VideoBuilder extends Component {
   state = {
     blackScreen: false,
-    videoPlayerSliderOpen: false
+    videoPlayerSliderOpen: false,
+    activeSelectedCategory : 'mostPopular'
   };
 
   componentWillMount() {
@@ -42,11 +44,13 @@ class VideoBuilder extends Component {
           event.target.value.toLowerCase()) !== -1;
       });
     }
-
     this.props.onSearchVideo(updatedList, inputEmpty);
-
   }
 
+  getVideoCategoy = (category) => {
+    this.props.onInitVideos(category);
+    this.setState( { activeSelectedCategory : category } );
+  }
 
   render() {
     if (!this.props.videosList) {
@@ -64,14 +68,15 @@ class VideoBuilder extends Component {
           <SearchInput filterList={this.filterListHandler} />
           <div className="VideoMenu">
             <ul>
-              <li>
-                Alon's Videos
-              </li>
-              <li>
+              <li 
+              className={classNames({'Selected' : this.state.activeSelectedCategory === 'mostPopular'})}
+              onClick={() => this.getVideoCategoy('mostPopular')}>
                 Most Popular
               </li>
-              <li>
-                Tech
+              <li
+              className={classNames({'Selected' : this.state.activeSelectedCategory === 'alon'})}
+              onClick={() => this.getVideoCategoy('alon')}>
+                Alon's Videos
               </li>
             </ul>
           </div>
@@ -101,7 +106,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitVideos: () => dispatch(actions.initVideos()),
+    onInitVideos: (category) => dispatch(actions.initVideos(category)),
     onSetCurrentVideo: (videoId) => dispatch(actions.setCurrentVideo(videoId)),
     onSearchVideo: (videos, inputEmpty) => dispatch(actions.searchVideo(videos, inputEmpty))
   }

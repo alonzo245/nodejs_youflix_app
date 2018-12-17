@@ -30,9 +30,9 @@
     }
   }
 
-  &:hover ~ .Video {
-    opacity: 0.3;
-  }
+  // &:hover ~ .Video {
+  //   opacity: 0.3;
+  // }
 
   &:hover > .VideoImage {
     color: green;
@@ -58,21 +58,25 @@
     flex-direction: column-reverse;
 
     .Title {
-      text-align: right;
-      direction: rtl;
-      padding: 19px 16px;
+      text-align: left;
+      direction: ltr;
+      padding: 5px 10px;
       width: 100%;
       font-size: 12px;
-      margin-bottom: 30px;
+      margin-bottom: 16px;
       height: 60px;
       opacity: 1;
       -webkit-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
+      /* white-space: nowrap; */
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       .Info {
-        margin: 0px -2px;
-        font-size: 22px;
+        margin: 0px 6px 0px 0px;
+        font-size: 17px;
         float: left;
+        -webkit-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
       }
     }
@@ -80,9 +84,9 @@
     .Date {
       display: inline-block;
       text-align: left;
-      margin-bottom: 0px;
+      margin-bottom: 7px;
       margin-left: 20px;
-      width: 94%;
+      width: 95%;
       font-size: 12px;
       height: 16px;
       align-self: flex-end;
@@ -90,8 +94,9 @@
       transition: all 0.3s ease-in-out;
 
       .GoClock {
-        margin-bottom: 3px;
-        font-size: 20px;
+        margin: 0px;
+        font-size: 17px;
+        -webkit-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
       }
     }
@@ -181,9 +186,9 @@
       opacity: 0.8;
     }
 
-    &:hover ~ .Video {
-      opacity: 0.3;
-    }
+    // &:hover ~ .Video {
+    //   opacity: 0.3;
+    // }
 
     &:hover > .VideoImage {
       color: green;
@@ -203,40 +208,45 @@
       flex-direction: column-reverse;
 
       .Title {
-        text-align: right;
-        direction: rtl;
-        padding: 19px 16px;
+        text-align: left;
+        direction: ltr;
+        padding: 5px 10px;
         width: 100%;
         font-size: 12px;
-        margin-bottom: 30px;
+        margin-bottom: 16px;
         height: 60px;
         opacity: 1;
         -webkit-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
-
+        /* white-space: nowrap; */
+        overflow: hidden;
+        text-overflow: ellipsis;
+  
         .Info {
-          margin: 0px -2px;
-          font-size: 22px;
+          margin: 0px 6px 0px 0px;
+          font-size: 17px;
           float: left;
+          -webkit-transition: all 0.3s ease-in-out;
           transition: all 0.3s ease-in-out;
         }
       }
-
+  
       .Date {
         display: inline-block;
         text-align: left;
-        margin-bottom: 0px;
+        margin-bottom: 7px;
         margin-left: 20px;
-        width: 94%;
+        width: 95%;
         font-size: 12px;
         height: 16px;
         align-self: flex-end;
         opacity: 0;
         transition: all 0.3s ease-in-out;
-
+  
         .GoClock {
-          margin-bottom: 3px;
-          font-size: 20px;
+          margin: 0px;
+          font-size: 17px;
+          -webkit-transition: all 0.3s ease-in-out;
           transition: all 0.3s ease-in-out;
         }
       }

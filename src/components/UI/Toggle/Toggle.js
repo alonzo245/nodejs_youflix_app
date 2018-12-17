@@ -4,7 +4,7 @@ import './Toggle.scss';
 const Toggle = (props) => {
 
   return (
-    <div className="ToggleCheckbox" onClick={props.toggleTheme}>
+    <div className="ToggleCheckbox" onChange={props.toggleTheme}>
       <label className="switch">
         <input type="checkbox" />
         <span className="slider round"></span>

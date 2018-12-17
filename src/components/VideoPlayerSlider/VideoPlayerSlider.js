@@ -12,11 +12,19 @@ const VideoPlayerSlider = (props) => {
 
   let videoDescription = null;
   if (props.currentVideoData) {
-    videoDescription = props.currentVideoData.snippet.description.split('\n').map( (line,i) =>  <p key={i} >{line}</p>
+    videoDescription = props.currentVideoData.snippet.description.split('\n').map((line, i) => <p key={i} >{line}</p>
     );
   }
 
   if (props.currentVideoData) {
+
+    let videoId = null;
+    if ('upload' in props.currentVideoData.contentDetails) {
+      videoId = props.currentVideoData.contentDetails.upload.videoId;
+    } else {
+      videoId = props.currentVideoData.id
+    }
+
     return (
       <React.Fragment>
         <div className={attachedClasses.join(' ')}>
@@ -26,7 +34,7 @@ const VideoPlayerSlider = (props) => {
 
           <Spinner />
           <Iframe
-            src={props.currentVideoData.contentDetails.upload.videoId}
+            src={videoId}
             mute={false}
             autoplay={true}
             controls={true}
