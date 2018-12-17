@@ -1,8 +1,8 @@
 .ToggleCheckbox {
   display: inline-block;
-  width: 177px;
+  width: 190px;
   padding-right: 35px;
-
+  color:gray;
   @media (max-width: 576px) {
     & {
       width: 76px;
@@ -262,8 +262,8 @@
   &.demo-rebrand-2 {
     @include can-toggle-branding
     (
-      rgb(24, 24, 24),  // Off state color
       #880000,  // On state color
+      rgb(24, 24, 24),  // Off state color
       rgba(rgb(7, 7, 7), 0.7),  // Off state text color
       cubic-bezier(0.860, 0.000, 0.070, 1.000)  // Transition timing function
     );
