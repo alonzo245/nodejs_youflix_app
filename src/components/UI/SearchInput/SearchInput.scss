@@ -6,7 +6,11 @@
   pointer-events: none;
   margin-top: 101px;
 
- input {
+  @media (max-width: 576px) {
+    margin-top: 114px;
+  }
+  
+  input {
     font-family: "Lato", sans-serif;
     font-weight: 300;
     font-size: 14px;
@@ -37,6 +41,5 @@
     @media (max-width: 576px) {
       width: 90%;
     }
-    
-}
+  }
 }

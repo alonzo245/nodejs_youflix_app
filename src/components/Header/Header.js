@@ -6,13 +6,13 @@ import Toggle from '../UI/Toggle/Toggle';
 
 const Header = (props) => (
   <header className="Header">
-    <div className="LeftItems">
-      <img className="LogoImage" src={Logo} alt="YOUFLIX" />
+    <img className="LogoImage" src={Logo} alt="YOUFLIX" />
+    <div className="NavWrapper">
       <Navigation />
-    </div>
-    <div className="">
-      <Toggle toggleTheme={props.toggleTheme} />
-      {/* Ver.1.0 */}
+      <div className="RightItems">
+        <Toggle toggleTheme={props.toggleTheme} />
+        {/* Ver.1.0 */}
+      </div>
     </div>
   </header>
 );

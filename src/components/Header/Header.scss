@@ -17,14 +17,24 @@
     margin-right: 10px;
     transition: margin 0.125s ease;
   }
-  
-  .LeftItems {
+
+  .NavWrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
     width: 90%;
-    .LogoImage{
+
+    .RightItems {
+      flex: 1;
+      text-align: right;
+    }
+
+    .LogoImage {
       float: left;
     }
   }
-  .Version{
+  .Version {
     color: white;
     font-size: 11px;
     border: 1px solid gray;
@@ -32,5 +42,28 @@
     padding: 2px 5px;
     box-sizing: border-box;
     height: 23px;
+  }
+
+  @media (max-width: 576px) {
+    & {
+      display: block;
+      padding: 20px 8px 0px 6px;
+      text-align: center;
+      .Logo {
+        margin-right: 0px auto;
+        transition: margin 0.125s ease;
+      }
+      & .NavWrapper {
+        width: 100%;
+        margin: 13px 0;
+        display: flex;
+        padding: 0 8px;
+
+        .RightItems {
+          flex: 1;
+          text-align: right;
+        }
+      }
+    }
   }
 }
