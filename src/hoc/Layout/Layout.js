@@ -4,12 +4,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 
+const toggleThemeHandler = () => {
+  console.log('sss')
+}
 const Layout = (props) => {
   const layoutClasses = props.togglePosition ? 'Layout Fixed Dark2' : 'Layout Dark2';
 
   return (
     <div className={layoutClasses}>
-      <Header />
+      <Header toggleTheme={toggleThemeHandler} />
       {props.children}
       <Footer />
     </div>

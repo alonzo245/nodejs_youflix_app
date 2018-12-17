@@ -13,7 +13,7 @@ const Iframe = (props) => {
       '?autoplay=' + autoplay +
       '&mute=' + mute +
       '&controls=' + controls +
-      '&showinfo=0&rel=0&modestbranding=1&autohide=1&'}
+      '&fs=0&showinfo=0&rel=0&modestbranding=1&autohide=1&'}
       title={props.title} />
   )
 };
