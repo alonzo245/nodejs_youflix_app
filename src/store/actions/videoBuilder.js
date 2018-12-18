@@ -36,7 +36,8 @@ export const initVideos = (category) => {
     switch(category) {
       default:
       case 'mostPopular':
-      apiUrl = '/mostpopular.api.json';
+      apiUrl = 'http://localhost:8000/feed/videos';
+      // apiUrl = '/mostpopular.api.json';
       break;
       case 'alon':
       apiUrl = '/youtube.api.json';
