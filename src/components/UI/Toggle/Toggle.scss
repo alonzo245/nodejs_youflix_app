@@ -1,8 +1,9 @@
 .ToggleCheckbox {
   display: inline-block;
-  width: 190px;
-  padding-right: 35px;
-  color:gray;
+  width: 158px;
+  padding-right: 3px;
+  padding-top: 14px;
+  color: gray;
   @media (max-width: 576px) {
     & {
       width: 76px;

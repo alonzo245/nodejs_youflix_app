@@ -10,7 +10,7 @@ const links = [
 ];
 
 const Navigation = (props) => (
-  <div id="navigation" className="Navigation">
+  
     <nav>
     <ul>
       {links.map( (link, index) => (
@@ -18,7 +18,7 @@ const Navigation = (props) => (
       ))}
     </ul>
     </nav>
-  </div>
+
 );
 
 export default Navigation;

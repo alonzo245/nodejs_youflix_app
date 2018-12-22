@@ -5,9 +5,9 @@ import Iframe from '../Iframe/Iframe';
 import Spinner from '../UI/Spinner/Spinner';
 
 const VideoPlayerSlider = (props) => {
-  let attachedClasses = ["SideDrawer", "Close"];
+  let attachedClasses = ["VideoPlayerSlider", "Close"];
   if (props.active) {
-    attachedClasses = ["SideDrawer", "Open"];
+    attachedClasses = ["VideoPlayerSlider", "Open"];
   }
 
   let videoDescription = null;

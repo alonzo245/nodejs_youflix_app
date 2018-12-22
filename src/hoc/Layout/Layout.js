@@ -1,14 +1,24 @@
-
 import React, { Component } from 'react';
 import './Layout.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-
+import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
 class Layout extends Component {
   state = {
-    themeToggler: false
+    themeToggler: false,
+    showSideDrawer: false
+  }
+
+  sideDrawerClosedHandler = () => {
+    this.setState({ showSideDrawer: false });
+  }
+
+  sideDrawerToggleHandler = () => {
+    this.setState((prevState) => {
+      return { showSideDrawer: !prevState.showSideDrawer };
+    });
   }
 
   toggleThemeHandler = () => {
@@ -30,7 +40,16 @@ class Layout extends Component {
   render() {
     return (
       <div className="Layout">
-        <Header toggleTheme={this.toggleThemeHandler} {...this.props} />
+        <SideDrawer
+        toggleTheme={this.toggleThemeHandler}
+          isAuth={this.props.isAuthenticated}
+          open={this.state.showSideDrawer}
+          closed={this.sideDrawerClosedHandler} />
+        <Header
+          drawerToggleClicked={this.sideDrawerToggleHandler}
+          
+          {...this.props}
+        />
         {this.props.children}
         <Footer />
       </div>

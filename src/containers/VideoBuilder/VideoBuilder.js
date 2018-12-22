@@ -4,7 +4,6 @@ import * as actions from '../../store/actions/index';
 import classNames from 'classnames';
 
 import Video from '../../components/Video/Video';
-import BlackScreen from '../../components/UI/BlackScreen/BlackScreen';
 import axios from '../../axios';
 import './VideoBuilder.scss';
 import Spinner from '../../components/UI/Spinner/Spinner';
@@ -13,7 +12,6 @@ import SearchInput from '../../components/UI/SearchInput/SearchInput';
 
 class VideoBuilder extends Component {
   state = {
-    blackScreen: false,
     videoPlayerSliderOpen: false,
     activeSelectedCategory : 'mostPopular'
   };
@@ -28,7 +26,6 @@ class VideoBuilder extends Component {
 
     this.setState({
       ...this.state,
-      blackScreen: !this.state.blackScreen,
       videoPlayerSliderOpen: !this.state.videoPlayerSliderOpen
     });
   }
@@ -64,7 +61,6 @@ class VideoBuilder extends Component {
             active={this.state.videoPlayerSliderOpen}
             currentVideoData={this.props.currentVideo}
           />
-          <BlackScreen active={this.state.blackScreen} />
           <SearchInput filterList={this.filterListHandler} />
           <div className="VideoMenu">
             <ul>
