@@ -21,7 +21,7 @@ const sideDrawer = (props) => {
                 </div>
                 <Navigation />
                 <div className="Version">
-                    <AuthButton />
+                    <AuthButton clicked={props.login} />
                     Ver.1.0
                 </div>
             </div>

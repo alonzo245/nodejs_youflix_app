@@ -11,18 +11,19 @@ const VideoPlayerSlider = (props) => {
   }
 
   let videoDescription = null;
+  // console.log(props.currentVideoData)
   if (props.currentVideoData) {
-    videoDescription = props.currentVideoData.snippet.description.split('\n').map((line, i) => <p key={i} >{line}</p>
+    videoDescription = props.currentVideoData.video.snippet.description.split('\n').map((line, i) => <p key={i} >{line}</p>
     );
   }
 
   if (props.currentVideoData) {
 
     let videoId = null;
-    if ('upload' in props.currentVideoData.contentDetails) {
-      videoId = props.currentVideoData.contentDetails.upload.videoId;
+    if ('upload' in props.currentVideoData.video.contentDetails) {
+      videoId = props.currentVideoData.video.contentDetails.upload.videoId;
     } else {
-      videoId = props.currentVideoData.id
+      videoId = props.currentVideoData.video.id
     }
 
     return (

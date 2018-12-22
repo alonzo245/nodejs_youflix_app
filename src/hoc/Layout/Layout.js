@@ -4,11 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
+import Modal from '../../components/UI/Modal/Modal';
+import LoginForm from '../../components/LoginForm/LoginForm';
 
 class Layout extends Component {
   state = {
     themeToggler: false,
-    showSideDrawer: false
+    showSideDrawer: false,
+    loginIn: false
   }
 
   sideDrawerClosedHandler = () => {
@@ -37,17 +40,31 @@ class Layout extends Component {
     }
   }
 
+  loginInCancelHandler = () => {
+    this.setState({ loginIn: false });
+  }
+
+  loginHandler = () => {
+    this.setState({ loginIn: true });
+  }
+
   render() {
     return (
       <div className="Layout">
+        <Modal show={this.state.loginIn} modalClosed={this.loginInCancelHandler}>
+          <LoginForm />
+        </Modal>
+
         <SideDrawer
-        toggleTheme={this.toggleThemeHandler}
+          login={this.loginHandler}
+          toggleTheme={this.toggleThemeHandler}
           isAuth={this.props.isAuthenticated}
           open={this.state.showSideDrawer}
           closed={this.sideDrawerClosedHandler} />
+
         <Header
+          login={this.loginHandler}
           drawerToggleClicked={this.sideDrawerToggleHandler}
-          
           {...this.props}
         />
         {this.props.children}

@@ -4,7 +4,12 @@ import './AuthButton.scss';
 
 const AuthButton = (props) => (
     <React.Fragment>
-        <button className="AuthButton">Login</button>
+        <button
+            onClick={props.clicked}
+            className="AuthButton"
+        >
+            Login
+        </button>
     </React.Fragment>
 );
 

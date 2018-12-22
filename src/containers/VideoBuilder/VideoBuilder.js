@@ -16,7 +16,7 @@ class VideoBuilder extends Component {
     activeSelectedCategory : 'mostPopular'
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.onInitVideos();
   }
 
@@ -81,7 +81,7 @@ class VideoBuilder extends Component {
               return <Video
                 key={index}
                 videoId={index}
-                videoData={data}
+                videoData={data.video}
                 togglePlayer={this.togglePlayerHandler}
               />
             })}

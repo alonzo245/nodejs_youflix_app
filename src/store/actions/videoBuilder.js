@@ -37,7 +37,8 @@ export const initVideos = (category) => {
       default:
       case 'mostPopular':
       // apiUrl = 'http://localhost:8000/feed/videos';
-      apiUrl = '/mostpopular.api.json';
+      // apiUrl = '/mostpopular.api.json';
+      apiUrl = 'http://localhost:8000/video-feed/videos';
       break;
       case 'alon':
       apiUrl = '/youtube.api.json';
@@ -46,7 +47,8 @@ export const initVideos = (category) => {
 
     axios.get(apiUrl)
       .then(response => {
-        dispatch(setVideos(response.data.items));
+        // console.log(response.data.videos)
+        dispatch(setVideos(response.data.videos));
       })
       .catch(error => {
         dispatch(fetchVideosFailed());

@@ -14,7 +14,7 @@ const Header = (props) => (
         <Navigation />
       </div>
       <div className="RightItems">
-        <AuthButton />
+        <AuthButton clicked={props.login} />
       </div>
     </div>
   </header>
