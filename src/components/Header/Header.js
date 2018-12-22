@@ -14,7 +14,7 @@ const Header = (props) => (
         <Navigation />
       </div>
       <div className="RightItems">
-        Ver.1.0
+        Login
       </div>
     </div>
   </header>
