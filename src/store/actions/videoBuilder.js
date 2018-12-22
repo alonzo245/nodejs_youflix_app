@@ -32,16 +32,15 @@ export const fetchVideosFailed = () => {
 export const initVideos = (category) => {
   return dispatch => {
 
-    let apiUrl;
+    // let apiUrl = 'http://localhost:8000/video-feed/videos?category=';
+    let apiUrl = 'https://flixapi.herokuapp.com/video-feed/videos?category=';
     switch(category) {
       default:
       case 'mostPopular':
-      // apiUrl = 'http://localhost:8000/feed/videos';
-      // apiUrl = '/mostpopular.api.json';
-      apiUrl = 'http://localhost:8000/video-feed/videos';
+      apiUrl += 'mostpopular';
       break;
       case 'alon':
-      apiUrl = '/youtube.api.json';
+      apiUrl += 'alonsvideos';
       break;
     }
 

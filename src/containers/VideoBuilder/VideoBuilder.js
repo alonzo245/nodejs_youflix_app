@@ -32,12 +32,13 @@ class VideoBuilder extends Component {
 
   filterListHandler = (event) => {
     let inputEmpty = true;
-    let updatedList = { ...this.props.searchVideosList };
+    let updatedList = [];
 
     if (event.target.value) {
       inputEmpty = false;
       updatedList = this.props.videosList.filter((video) => {
-        return video.snippet.title.toLowerCase().search(
+        // console.log(video)
+        return video.video.snippet.title.toLowerCase().search(
           event.target.value.toLowerCase()) !== -1;
       });
     }
