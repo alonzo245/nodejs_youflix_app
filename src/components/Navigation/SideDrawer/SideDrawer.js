@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../../Logo/Logo';
 import Toggle from '../../UI/Toggle/Toggle';
-// import NavigationItems from '../NavigationItems/NavigationItems';
+import AuthButton from '../../UI/AuthButton/AuthButton';
 import './SideDrawer.scss';
 import Navigation from '../../Navigation/Navigation';
 import Backdrop from '../../UI/Backdrop/Backdrop';
@@ -21,6 +21,7 @@ const sideDrawer = (props) => {
                 </div>
                 <Navigation />
                 <div className="Version">
+                    <AuthButton />
                     Ver.1.0
                 </div>
             </div>

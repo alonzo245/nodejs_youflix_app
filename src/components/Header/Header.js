@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.scss';
 import Navigation from '../Navigation/Navigation';
 import Logo from './images/logo.png';
-
+import AuthButton from '../UI/AuthButton/AuthButton';
 import DrawerToggle from '../Navigation/SideDrawer/DrawerToggle/DrawerToggle';
 
 const Header = (props) => (
@@ -14,7 +14,7 @@ const Header = (props) => (
         <Navigation />
       </div>
       <div className="RightItems">
-        Login
+        <AuthButton />
       </div>
     </div>
   </header>
