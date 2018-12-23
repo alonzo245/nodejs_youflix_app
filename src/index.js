@@ -12,6 +12,7 @@ import thunk from 'redux-thunk';
 //import reducers
 import videoBuilderReducer from './store/reducers/videoBuilder';
 import appReducer from './store/reducers/app';
+import authReducer from './store/reducers/auth';
 
 //redux debugging
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
@@ -19,6 +20,7 @@ const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX
 // get reducers
 const rooteReducers = combineReducers({
   app: appReducer,
+  auth: authReducer,
   videoBuilder: videoBuilderReducer
 })
 

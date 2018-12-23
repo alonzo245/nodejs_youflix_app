@@ -5,11 +5,24 @@ import * as actions from './store/actions/index';
 import Layout from './hoc/Layout/Layout';
 import VideoBuilder from './containers/VideoBuilder/VideoBuilder';
 import About from './containers/About/About';
+import Signup from './containers/Signup/Signup';
 import './App.scss';
 
 class App extends Component {
 
+  state = {
+    authenticated: false
+  }
+
   render() {
+    let routes = (
+      <Route path="/signup" component={Signup} />
+    );
+
+    if(this.state.authenticated){
+      let routes = null;
+    }
+    
     return (
       <BrowserRouter >
         <Layout togglePosition={this.props.layoutScrollToggler}>
@@ -23,6 +36,7 @@ class App extends Component {
               path='/about'
               component={About}
             />
+            {routes}
             {this.props.children}
           </Switch>
         </Layout>

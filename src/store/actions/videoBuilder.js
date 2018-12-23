@@ -32,8 +32,8 @@ export const fetchVideosFailed = () => {
 export const initVideos = (category) => {
   return dispatch => {
 
-    // let apiUrl = 'http://localhost:8000/video-feed/videos?category=';
-    let apiUrl = 'https://flixapi.herokuapp.com/video-feed/videos?category=';
+    let apiUrl = 'http://localhost:8000/video-feed/videos?category=';
+    // let apiUrl = 'https://flixapi.herokuapp.com/video-feed/videos?category=';
     switch(category) {
       default:
       case 'mostPopular':

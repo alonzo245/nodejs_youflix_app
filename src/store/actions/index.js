@@ -8,3 +8,7 @@ export {
 export {
   toggleLayoutScroll
 } from './app';
+export {
+  auth,
+  logout
+} from './auth';
