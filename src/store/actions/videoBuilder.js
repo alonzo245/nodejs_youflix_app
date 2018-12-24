@@ -46,7 +46,6 @@ export const initVideos = (category) => {
 
     axios.get(apiUrl)
       .then(response => {
-        // console.log(response.data.videos)
         dispatch(setVideos(response.data.videos));
       })
       .catch(error => {

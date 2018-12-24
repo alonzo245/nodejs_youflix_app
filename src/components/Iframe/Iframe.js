@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Iframe = (props) => {
-  // console.log(props)
+
 
   const mute = props.mute ? '1' : '0';
   const autoplay = props.autoplay ? '1' : '0';

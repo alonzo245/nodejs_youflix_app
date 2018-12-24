@@ -6,26 +6,30 @@ import Layout from './hoc/Layout/Layout';
 import VideoBuilder from './containers/VideoBuilder/VideoBuilder';
 import About from './containers/About/About';
 import Signup from './containers/Signup/Signup';
+import Logout from './containers/Auth/Logout/Logout';
 import './App.scss';
 
 class App extends Component {
 
-  state = {
-    authenticated: false
+  componentDidMount() {
+    this.props.onTryAutoSignup();
   }
 
   render() {
     let routes = (
       <Route path="/signup" component={Signup} />
     );
-
-    if(this.state.authenticated){
-      let routes = null;
+    if (this.props.isAuthenticated) {
+      routes = (
+        <Route path="/logout" component={Logout} />
+      );
     }
-    
     return (
       <BrowserRouter >
-        <Layout togglePosition={this.props.layoutScrollToggler}>
+        <Layout
+          isAuth={this.props.isAuthenticated}
+          togglePosition={this.props.layoutScrollToggler}
+        >
           <Switch>
             <Route
               exact
@@ -47,13 +51,15 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    layoutScrollToggler: state.app.layoutScrollToggler
+    layoutScrollToggler: state.app.layoutScrollToggler,
+    isAuthenticated: state.auth.token !== null
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onToggleLayoutScroll: () => dispatch(actions.toggleLayoutScroll())
+    onToggleLayoutScroll: () => dispatch(actions.toggleLayoutScroll()),
+    onTryAutoSignup: () => dispatch(actions.authCheckState())
   }
 }
 

@@ -11,6 +11,7 @@ const sideDrawer = (props) => {
     if (props.open) {
         attachedClasses = ["SideDrawer", "Open"];
     }
+
     return (
         <React.Fragment>
             <Backdrop show={props.open} clicked={props.closed} />
@@ -21,7 +22,7 @@ const sideDrawer = (props) => {
                 </div>
                 <Navigation />
                 <div className="Version">
-                    <AuthButton clicked={props.login} />
+                    <AuthButton clicked={props.login} isAuth={props.isAuth} />
                     Ver.1.0
                 </div>
             </div>

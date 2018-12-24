@@ -12,7 +12,6 @@ class Video extends Component {
       videoImageVisibile: true
     };
 
-    // console.log('props',this.props)
   }
 
   overVideoHandler = (data = null) => {

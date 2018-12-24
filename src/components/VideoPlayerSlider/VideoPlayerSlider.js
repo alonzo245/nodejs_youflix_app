@@ -11,7 +11,6 @@ const VideoPlayerSlider = (props) => {
   }
 
   let videoDescription = null;
-  // console.log(props.currentVideoData)
   if (props.currentVideoData) {
     videoDescription = props.currentVideoData.video.snippet.description.split('\n').map((line, i) => <p key={i} >{line}</p>
     );

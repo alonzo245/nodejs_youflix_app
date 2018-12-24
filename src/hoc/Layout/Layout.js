@@ -51,21 +51,25 @@ class Layout extends Component {
   render() {
     return (
       <div className="Layout">
-        <Modal show={this.state.loginIn} modalClosed={this.loginInCancelHandler}>
+        <Modal
+          show={this.state.loginIn}
+          modalClosed={this.loginInCancelHandler}
+        >
           <LoginForm modalClosed={this.loginInCancelHandler} />
         </Modal>
 
         <SideDrawer
           login={this.loginHandler}
           toggleTheme={this.toggleThemeHandler}
-          isAuth={this.props.isAuthenticated}
+          isAuth={this.props.isAuth}
           open={this.state.showSideDrawer}
           closed={this.sideDrawerClosedHandler} />
 
         <Header
+          isAuth={this.props.isAuth}
           login={this.loginHandler}
           drawerToggleClicked={this.sideDrawerToggleHandler}
-          {...this.props}
+        // {...this.props}
         />
         {this.props.children}
         <Footer />
@@ -85,7 +89,6 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 
 const toggleTheme = () => {
-  console.log('sss')
 }
 const Layout = (props) => {
   const layoutClasses = props.togglePosition ? 'Layout Fixed Dark2' : 'Layout Dark2';

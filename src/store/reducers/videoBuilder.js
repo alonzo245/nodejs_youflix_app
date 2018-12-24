@@ -20,7 +20,6 @@ const setVideos = (state, action) => {
 
 const filterVideoList = (state, action) => {
   if(!action.videos.length){
-    console.log('no res',)
     action.videos = state.searchVideosList
   }
 

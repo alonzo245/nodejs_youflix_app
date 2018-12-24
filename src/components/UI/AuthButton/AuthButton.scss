@@ -14,9 +14,11 @@
   outline: none;
   &:hover {
     background-color: black;
+    color: white;
   }
   &:active {
     background-color: rgb(51, 51, 51);
+    color: white;
   }
 }
 
@@ -24,5 +26,7 @@
   .AuthButton{
     width: 100%;
     margin: 0;
+    display: inline-block;
+    text-align: center;
   }
 }
