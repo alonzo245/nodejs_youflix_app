@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Input from '../../components/UI/Input/Input';
 import { updateObject, checkValidity } from '../../shared/utility';
 import * as actions from '../../store/actions/index';
@@ -11,6 +11,7 @@ class Signup extends Component {
     controls: {
       name: {
         elementType: 'input',
+        class: 'form-control',
         elementConfig: {
           type: 'text',
           placeholder: 'Full Name'
@@ -24,6 +25,7 @@ class Signup extends Component {
       },
       email: {
         elementType: 'input',
+        class: 'form-control',
         elementConfig: {
           type: 'email',
           placeholder: 'Mail Address'
@@ -38,6 +40,7 @@ class Signup extends Component {
       },
       password: {
         elementType: 'input',
+        class: 'form-control',
         elementConfig: {
           type: 'password',
           placeholder: 'Password'
@@ -88,6 +91,7 @@ class Signup extends Component {
       <Input
         key={formElement.id}
         elementType={formElement.config.elementType}
+        elementClass={formElement.config.class}
         elementConfig={formElement.config.elementConfig}
         value={formElement.config.value}
         invalid={!formElement.config.valid}
@@ -110,14 +114,32 @@ class Signup extends Component {
     }
 
     return (
-      <div style={{ "marginTop": "150px" }} className="Auth">
-        {authRedirect}
-        {errorMessage}
-        <form onSubmit={this.submitHandler}>
-          {form}
-          <button>signup</button>
-        </form>
+      <div className="Signup">
 
+
+
+        <div className="signup__container">
+          <div className="container__child signup__form">
+          <h4 className="title">Signup</h4>
+            <form onSubmit={this.submitHandler}>
+              <div className="form-group">
+                {authRedirect}
+                {errorMessage}
+                {form}
+              </div>
+              <div className="m-t-lg">
+                <ul className="list-inline">
+                  <li>
+                    <input className="btn btn--form" type="submit" value="Register" />
+                  </li>
+                  <li>
+                    <Link className="signup__link" to="/">I'm already a member</Link>
+                  </li>
+                </ul>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     )
   }

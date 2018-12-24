@@ -52,7 +52,7 @@ class Layout extends Component {
     return (
       <div className="Layout">
         <Modal show={this.state.loginIn} modalClosed={this.loginInCancelHandler}>
-          <LoginForm />
+          <LoginForm modalClosed={this.loginInCancelHandler} />
         </Modal>
 
         <SideDrawer

@@ -10,6 +10,10 @@ const input = ( props ) => {
         inputClasses.push(classes.Invalid);
     }
 
+    if (props.elementClass) {
+        inputClasses.push(props.elementClass);
+    }
+
     switch ( props.elementType ) {
         case ( 'input' ):
             inputElement = <input

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import Input from '../UI/Input/Input';
 import { updateObject, checkValidity } from '../../shared/utility';
+import './LoginForm.scss';
 
 class LoginForm extends Component {
   state = {
@@ -78,16 +79,16 @@ class LoginForm extends Component {
     ));
 
     return (
-      <React.Fragment>
-        <form onSubmit={this.submitHandler}>
+      <div className="LoginForm">
+        <form onSubmit={this.submitHandler} >
           {form}
-          <button>SUBMIT</button>
+          <button className="LoginButton">Login</button>
         </form>
         <div>
-          Not a member yet?
-          <Link to="/signup">Signup it free!</Link>
+          <div className="text">Not a member yet?</div>
+          <Link to="/signup" onClick={this.props.modalClosed}>Signup it free!</Link>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }
