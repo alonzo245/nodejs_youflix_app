@@ -47,18 +47,26 @@ export const checkAuthTimeout = (expirationTime) => {
     };
 };
 
-export const auth = (email, name, password) => {
+export const auth = (email = null, password = null, name = null, isSignup = false) => {
     return dispatch => {
         dispatch(authStart());
         const authData = {
             email: email,
-            name: name,
-            password: password,
-            returnSecureToken: true
+            password: password
         };
-        let url = 'http://localhost:8000/auth/signup';
 
-        axios.put(url, authData)
+        let baseUrl = 'https://flixapi.herokuapp.com';
+        if (window.location.hostname === "localhost") {
+            baseUrl = window.location.protocol + '//localhost:8000';
+        }
+
+        let url = baseUrl + '/auth/login';
+        if (isSignup) {
+            url = baseUrl + '/auth/signup';
+            authData.name = name;
+        }
+
+        axios.post(url, authData)
             .then(response => {
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
                 localStorage.setItem('token', response.data.idToken);
@@ -85,8 +93,8 @@ export const authCheckState = () => {
             } else {
                 const userId = localStorage.getItem('userId');
                 dispatch(authSuccess(token, userId));
-                dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000 ));
-            }   
+                dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
+            }
         }
     };
 };

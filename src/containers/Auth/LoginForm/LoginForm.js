@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import Input from '../UI/Input/Input';
-import { updateObject, checkValidity } from '../../shared/utility';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions/index';
+import Input from '../../../components/UI/Input/Input';
+import { updateObject, checkValidity } from '../../../shared/utility';
 import './LoginForm.scss';
 
 class LoginForm extends Component {
@@ -27,7 +29,7 @@ class LoginForm extends Component {
           type: 'password',
           placeholder: 'Password'
         },
-        value: '123456',
+        value: '1234567890',
         validation: {
           required: true,
           minLength: 6
@@ -35,8 +37,7 @@ class LoginForm extends Component {
         valid: false,
         touched: false
       }
-    },
-    isSignup: true
+    }
   }
 
 
@@ -53,10 +54,23 @@ class LoginForm extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup);
+    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, true);
+  }
+
+  componentDidMount() {
+    if (this.props.authRedirectPath !== '/') {
+      this.props.onSetAuthRedirectPath();
+    }
   }
 
   render() {
+
+    let authRedirect = null;
+
+    if (this.props.authRedirectPath && this.props.isAuthenticated ) {
+      authRedirect = <Redirect to="/" />;
+      this.props.modalClosed()
+    }
 
     const formElementsArray = [];
     for (let key in this.state.controls) {
@@ -81,6 +95,7 @@ class LoginForm extends Component {
     return (
       <div className="LoginForm">
         <form onSubmit={this.submitHandler} >
+          {authRedirect}
           {form}
           <button className="LoginButton">Login</button>
         </form>
@@ -93,4 +108,20 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.token !== null,
+    authRedirectPath: state.auth.authRedirectPath
+  }
+}
+
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAuth: (email, password, name, isSignup) => dispatch(actions.auth(email, password, name, isSignup)),
+    onSetAuthRedirectPath: () => dispatch(
+      actions.setAuthRedirectPath('/')
+    )
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

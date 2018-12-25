@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './Header.scss';
 import Navigation from '../Navigation/Navigation';
 import Logo from './images/logo.png';
@@ -9,7 +10,9 @@ const Header = (props) => {
   return (
     <header className="Header">
       <DrawerToggle clicked={props.drawerToggleClicked} />
-      <img className="LogoImage" src={Logo} alt="YOUFLIX" />
+      <Link to="/">
+        <img className="LogoImage" src={Logo} alt="YOUFLIX" />
+      </Link>
       <div className="NavWrapper">
         <div className="Navigation">
           <Navigation />

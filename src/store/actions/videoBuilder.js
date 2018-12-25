@@ -32,16 +32,23 @@ export const fetchVideosFailed = () => {
 export const initVideos = (category) => {
   return dispatch => {
 
-    let apiUrl = 'http://localhost:8000/video-feed/videos?category=';
+    let baseUrl = 'https://flixapi.herokuapp.com';
+    if (window.location.hostname === "localhost") {
+      baseUrl = window.location.protocol + '//localhost:8000';
+    }
+
+    let apiUrl = baseUrl + '/video-feed/videos?category=';
+
+    // let apiUrl = 'http://localhost:8000/video-feed/videos?category=';
     // let apiUrl = 'https://flixapi.herokuapp.com/video-feed/videos?category=';
-    switch(category) {
+    switch (category) {
       default:
       case 'mostPopular':
-      apiUrl += 'mostpopular';
-      break;
+        apiUrl += 'mostpopular';
+        break;
       case 'alon':
-      apiUrl += 'alonsvideos';
-      break;
+        apiUrl += 'alonsvideos';
+        break;
     }
 
     axios.get(apiUrl)

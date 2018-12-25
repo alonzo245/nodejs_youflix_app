@@ -30,7 +30,7 @@ class Signup extends Component {
           type: 'email',
           placeholder: 'Mail Address'
         },
-        value: 'alon@alon.com',
+        value: 'alon@alush.com',
         validation: {
           required: true,
           isEmail: true
@@ -71,8 +71,9 @@ class Signup extends Component {
     event.preventDefault();
     this.props.onAuth(
       this.state.controls.email.value,
-      this.state.controls.name.value,
       this.state.controls.password.value,
+      this.state.controls.name.value,
+      true
     );
   }
 
@@ -120,9 +121,6 @@ class Signup extends Component {
 
     return (
       <div className="Signup">
-
-
-
         <div className="signup__container">
           <div className="container__child signup__form">
             <h4 className="title">Signup</h4>
@@ -159,8 +157,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAuth: (email, name, password) => dispatch(
-      actions.auth(email, name, password
+    onAuth: (email, password, name, isSignup) => dispatch(
+      actions.auth(email, password, name, isSignup
       )),
     onSetAuthRedirectPath: () => dispatch(
       actions.setAuthRedirectPath('/')

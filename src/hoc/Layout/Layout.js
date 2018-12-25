@@ -5,7 +5,7 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import Modal from '../../components/UI/Modal/Modal';
-import LoginForm from '../../components/LoginForm/LoginForm';
+import LoginForm from '../../containers/Auth/LoginForm/LoginForm';
 
 class Layout extends Component {
   state = {
