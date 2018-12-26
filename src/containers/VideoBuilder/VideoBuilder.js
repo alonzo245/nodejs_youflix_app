@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import classNames from 'classnames';
-
+import ScrollButton from '../../components/UI/ScrollToTop/ScrollToTop';
 import Video from '../../components/Video/Video';
 import axios from '../../axios';
 import './VideoBuilder.scss';
@@ -91,6 +91,7 @@ class VideoBuilder extends Component {
     else {
       return (
         <React.Fragment>
+          <ScrollButton scrollStepInPx="50" delayInMs="16.66"/>
           <VideoPlayerSlider
             togglePlayer={this.togglePlayerHandler}
             active={this.state.videoPlayerSliderOpen}
