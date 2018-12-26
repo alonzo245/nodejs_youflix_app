@@ -13,16 +13,12 @@ import SearchInput from '../../components/UI/SearchInput/SearchInput';
 class VideoBuilder extends Component {
   state = {
     videoPlayerSliderOpen: false,
-    activeSelectedCategory : 'mostPopular'
+    activeSelectedCategory: 'mostPopular'
   };
-
-  componentDidMount() {
-    this.props.onInitVideos();
-  }
 
   togglePlayerHandler = (data = null) => {
     this.props.toggleLayoutScroll();
-    this.props.onSetCurrentVideo(this.props.videosList[data.videoIndex]);
+    this.props.onSetCurrentVideo(this.props.videos[data.videoIndex]);
 
     this.setState({
       ...this.state,
@@ -36,7 +32,7 @@ class VideoBuilder extends Component {
 
     if (event.target.value) {
       inputEmpty = false;
-      updatedList = this.props.videosList.filter((video) => {
+      updatedList = this.props.videos.filter((video) => {
         return video.video.snippet.title.toLowerCase().search(
           event.target.value.toLowerCase()) !== -1;
       });
@@ -45,12 +41,47 @@ class VideoBuilder extends Component {
   }
 
   getVideoCategoy = (category) => {
-    this.props.onInitVideos(category);
-    this.setState( { activeSelectedCategory : category } );
+    this.props.onInitVideos(category, 1,true);
+    this.setState({ activeSelectedCategory: category });
   }
 
+  componentDidMount() {
+    this.props.onInitVideos(this.state.activeSelectedCategory, 1, false);
+    window.addEventListener('scroll', this.handleOnScroll);
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('scroll', this.handleOnScroll);
+  }
+
+  handleOnScroll = () => {
+    let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+    let scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
+    let clientHeight = document.documentElement.clientHeight || window.innerHeight;
+    let scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
+
+    if (scrolledToBottom) {
+      this.querySearchResult();
+    }
+  }
+
+  querySearchResult = () => {
+    if (this.state.requestSent) {
+      window.removeEventListener('scroll', this.handleOnScroll);
+      return;
+    }
+
+    if (this.props.totalRequestItems === this.props.totalItems) {
+      return;
+    }
+
+    setTimeout(
+      this.props.onInitVideos(this.state.activeSelectedCategory, this.props.page, false)
+      , 2000);
+  }
+  
   render() {
-    if (!this.props.videosList) {
+    if (!this.props.videos) {
       return <Spinner />;
     }
     else {
@@ -64,20 +95,20 @@ class VideoBuilder extends Component {
           <SearchInput filterList={this.filterListHandler} />
           <div className="VideoMenu">
             <ul>
-              <li 
-              className={classNames({'Selected' : this.state.activeSelectedCategory === 'mostPopular'})}
-              onClick={() => this.getVideoCategoy('mostPopular')}>
+              <li
+                className={classNames({ 'Selected': this.state.activeSelectedCategory === 'mostPopular' })}
+                onClick={() => this.getVideoCategoy('mostPopular')}>
                 Most Popular
               </li>
               <li
-              className={classNames({'Selected' : this.state.activeSelectedCategory === 'alon'})}
-              onClick={() => this.getVideoCategoy('alon')}>
+                className={classNames({ 'Selected': this.state.activeSelectedCategory === 'alon' })}
+                onClick={() => this.getVideoCategoy('alon')}>
                 Alon's Videos
               </li>
             </ul>
           </div>
           <div className="VideoBuilder">
-            {this.props.videosList.map((data, index) => {
+            {this.props.videos.map((data, index) => {
               return <Video
                 key={index}
                 videoId={index}
@@ -94,15 +125,19 @@ class VideoBuilder extends Component {
 
 const mapStateToProps = state => {
   return {
-    videosList: state.videoBuilder.videos,
+    page: state.videoBuilder.page,
+    requestSent: state.videoBuilder.requestSent,
+    totalItems: state.videoBuilder.totalItems,
+    totalRequestItems: state.videoBuilder.totalRequestItems,
+    videos: state.videoBuilder.videos,
     currentVideo: state.videoBuilder.currentVideo,
-    searchVideosList: state.videoBuilder.searchVideosList
+    searchVideosList: state.videoBuilder.searchVideosList,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitVideos: (category) => dispatch(actions.initVideos(category)),
+    onInitVideos: (category, page, flushVideos) => dispatch(actions.initVideos(category, page, flushVideos)),
     onSetCurrentVideo: (videoId) => dispatch(actions.setCurrentVideo(videoId)),
     onSearchVideo: (videos, inputEmpty) => dispatch(actions.searchVideo(videos, inputEmpty))
   }

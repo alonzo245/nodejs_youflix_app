@@ -23,14 +23,46 @@ export const setVideos = (videos) => {
   };
 };
 
+export const setCurrentPage = () => {
+  return {
+    type: actionTypes.SET_CURRENT_PAGE
+  };
+};
+
+export const requestSent = () => {
+  return {
+    type: actionTypes.SET_REQUEST_SENT
+  };
+};
+
 export const fetchVideosFailed = () => {
   return {
     type: actionTypes.FETCH_VIDEOS_FAILED
   };
 };
 
-export const initVideos = (category) => {
+export const flushVideosItems = () => {
+
+  return {
+    type: actionTypes.FLUSH_VIDEOS
+  };
+};
+
+export const setTotalItems = (totalItems, totalRequestItems) => {
+
+  return {
+    type: actionTypes.SET_TOTAL_ITEMS,
+    totalItems: totalItems,
+    totalRequestItems: totalRequestItems
+  };
+};
+
+export const initVideos = (category, page = 1, flushVideos = false) => {
   return dispatch => {
+
+    if(flushVideos){
+      dispatch(flushVideosItems());
+    }
 
     let baseUrl = 'https://flixapi.herokuapp.com';
     if (window.location.hostname === "localhost") {
@@ -39,8 +71,6 @@ export const initVideos = (category) => {
 
     let apiUrl = baseUrl + '/video-feed/videos?category=';
 
-    // let apiUrl = 'http://localhost:8000/video-feed/videos?category=';
-    // let apiUrl = 'https://flixapi.herokuapp.com/video-feed/videos?category=';
     switch (category) {
       default:
       case 'mostPopular':
@@ -51,9 +81,22 @@ export const initVideos = (category) => {
         break;
     }
 
+    apiUrl += "&page=" + page;
+
     axios.get(apiUrl)
       .then(response => {
-        dispatch(setVideos(response.data.videos));
+        dispatch(setTotalItems(
+          response.data.totlaItems,
+          response.data.videos.length
+        ));
+
+        if (response.data.videos.length > 0) {
+          dispatch(setVideos(response.data.videos));
+          dispatch(setCurrentPage());
+          dispatch(requestSent());
+        } else {
+
+        }
       })
       .catch(error => {
         dispatch(fetchVideosFailed());

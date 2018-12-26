@@ -12,14 +12,15 @@ const fetchVideosFailed = (state) => {
 };
 
 const setVideos = (state, action) => {
+
   return updateObject(state, {
-    videos: action.videos,
-    searchVideosList: action.videos
+    videos: state.videos.concat(action.videos),
+    searchVideosList: action.videos.concat(action.videos)
   })
 };
 
 const filterVideoList = (state, action) => {
-  if(!action.videos.length){
+  if (!action.videos.length) {
     action.videos = state.searchVideosList
   }
 
@@ -28,15 +29,55 @@ const filterVideoList = (state, action) => {
   });
 };
 
+const setCurrentPage = (state, action) => {
+  return updateObject(state, {
+    page: state.page + 1
+  });
+};
+
+const setRequestSent = (state, action) => {
+  return updateObject(state, {
+    requestSent: !state.requestSent
+  });
+};
+
+const setTotalItems = (state, action) => {
+  return updateObject(state, {
+    totalItems: action.totalItems,
+    totalRequestItems: state.totalRequestItems += action.totalRequestItems
+  });
+};
+
+const flushVideos = (state, action) => {
+  console.log('ss')
+  return updateObject(state, initialState);
+};
+
 const initialState = {
-  videosList: {},
+  page: 1,
+  requestSent: false,
+  totalItems: 0,
+  totalRequestItems: 0,
+  videos: [],
   searchVideosList: [],
-  currentVideo: null,
+  currentVideo: null
 };
 
 // actions switcher
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.FLUSH_VIDEOS:
+      return flushVideos(state, action)
+
+    case actionTypes.SET_TOTAL_ITEMS:
+      return setTotalItems(state, action)
+
+    case actionTypes.SET_REQUEST_SENT:
+      return setRequestSent(state, action)
+
+    case actionTypes.SET_CURRENT_PAGE:
+      return setCurrentPage(state, action)
+
     case actionTypes.FETCH_VIDEO_FILTER:
       return filterVideoList(state, action)
 

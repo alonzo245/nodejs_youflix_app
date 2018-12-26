@@ -3,7 +3,8 @@ export {
   initVideos,
   setVideos,
   fetchVideosFailed,
-  searchVideo
+  searchVideo,
+  setCurrentPage
 } from './videoBuilder';
 export {
   toggleLayoutScroll
