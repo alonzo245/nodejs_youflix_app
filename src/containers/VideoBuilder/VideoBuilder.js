@@ -41,7 +41,7 @@ class VideoBuilder extends Component {
   }
 
   getVideoCategoy = (category) => {
-    this.props.onInitVideos(category, 1,true);
+    this.props.onInitVideos(category, 1, true);
     this.setState({ activeSelectedCategory: category });
   }
 
@@ -58,8 +58,8 @@ class VideoBuilder extends Component {
     let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
     let scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
     let clientHeight = document.documentElement.clientHeight || window.innerHeight;
-    let scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
-    
+    let scrolledToBottom = Math.ceil(scrollTop + clientHeight + 70) >= scrollHeight;
+
     if (scrolledToBottom) {
       this.querySearchResult();
     }
@@ -79,11 +79,11 @@ class VideoBuilder extends Component {
       this.props.onInitVideos(this.state.activeSelectedCategory, this.props.page, false)
       , 2000);
   }
-  
+
   render() {
 
-    const paginationLoader = this.props.totalRequestItems !== this.props.totalItems 
-    ? <Spinner loaderPagination={true} /> : null;
+    const paginationLoader = this.props.totalRequestItems !== this.props.totalItems
+      ? <Spinner loaderPagination={true} /> : null;
 
     if (!this.props.videos.length) {
       return <Spinner />;

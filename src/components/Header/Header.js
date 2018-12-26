@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './Header.scss';
 import Navigation from '../Navigation/Navigation';
-import Logo from './images/logo.png';
+import Logo from '../../assets/images/youflix.png';
 import AuthButton from '../UI/AuthButton/AuthButton';
 import DrawerToggle from '../Navigation/SideDrawer/DrawerToggle/DrawerToggle';
 const Header = (props) => {

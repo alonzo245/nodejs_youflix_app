@@ -1,10 +1,11 @@
 import React from 'react';
-import Logo from '../../Logo/Logo';
+// import Logo from '../../Logo/Logo';
 import Toggle from '../../UI/Toggle/Toggle';
 import AuthButton from '../../UI/AuthButton/AuthButton';
 import './SideDrawer.scss';
 import Navigation from '../../Navigation/Navigation';
 import Backdrop from '../../UI/Backdrop/Backdrop';
+import { MdClose } from 'react-icons/md';
 
 const sideDrawer = (props) => {
     let attachedClasses = ["SideDrawer", "Close"];
@@ -17,7 +18,7 @@ const sideDrawer = (props) => {
             <Backdrop show={props.open} clicked={props.closed} />
             <div className={attachedClasses.join(' ')} onClick={props.closed}>
                 <div className="TopMenu">
-                    <Logo />
+                    <MdClose className="CloseSidrawer" />
                     <Toggle toggleTheme={props.toggleTheme} />
                 </div>
                 <Navigation />

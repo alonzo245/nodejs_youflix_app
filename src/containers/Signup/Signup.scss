@@ -1,11 +1,21 @@
 .Signup {
-  margin-top: 318px;
+  padding-top: 138px;
+  height: 380px;
+
+  @media (min-width: 360px) {
+    & {
+      padding-top: 78px;
+      height: 380px;
+    }
+  }
   // Remy function
   @function remy($value) {
     @return ($value / 16px) * 1rem;
   }
 
-  .title{color:red;}
+  .title {
+    color: red;
+  }
   a,
   [type="submit"] {
     transition: all 0.25s ease-in;
@@ -19,7 +29,6 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 30rem;
     border-radius: 0.1875rem;
     margin-top: 135px;
   }
@@ -93,7 +102,7 @@
   }
   .signup__form {
     padding: 2.5rem;
-    background: #252525;
+    // background: #252525;
   }
   label {
     font-size: 0.85rem;

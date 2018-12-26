@@ -1,15 +1,15 @@
 .ToggleCheckbox {
   display: inline-block;
-  width: 158px;
+  width: 118px;
   padding-right: 3px;
   padding-top: 14px;
   color: gray;
   @media (max-width: 576px) {
     & {
-      width: 76px;
+      width: 118px;
       padding-right: 0px;
       & .can-toggle__label-text{
-        display: none;
+        // display: none;
         
       }
     }
@@ -274,7 +274,7 @@
       25px,  // Toggle height
       50px,   // Toggle border radius
       2px,   // Offset (distance btw switch and box)
-      11px,  // Label font size
+      13px,  // Label font size
       11px,  // Switch font size
       0 4px 4px rgba(rgba(0, 0, 0, 0), 0.4) // Switch shadow on hover/focus
     ); 

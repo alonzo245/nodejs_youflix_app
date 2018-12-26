@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Logo from '../../assets/images/logo.png';
+import Logo from '../../assets/images/youflix.png';
 import './Logo.scss';
 
 const logo = (props) => (
