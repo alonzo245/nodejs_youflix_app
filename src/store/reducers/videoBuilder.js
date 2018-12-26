@@ -49,7 +49,6 @@ const setTotalItems = (state, action) => {
 };
 
 const flushVideos = (state, action) => {
-  console.log('ss')
   return updateObject(state, initialState);
 };
 

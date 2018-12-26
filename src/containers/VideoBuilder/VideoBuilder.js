@@ -59,7 +59,7 @@ class VideoBuilder extends Component {
     let scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
     let clientHeight = document.documentElement.clientHeight || window.innerHeight;
     let scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
-
+    
     if (scrolledToBottom) {
       this.querySearchResult();
     }
@@ -81,7 +81,11 @@ class VideoBuilder extends Component {
   }
   
   render() {
-    if (!this.props.videos) {
+
+    const paginationLoader = this.props.totalRequestItems !== this.props.totalItems 
+    ? <Spinner loaderPagination={true} /> : null;
+
+    if (!this.props.videos.length) {
       return <Spinner />;
     }
     else {
@@ -117,6 +121,7 @@ class VideoBuilder extends Component {
               />
             })}
           </div>
+          {paginationLoader}
         </React.Fragment>
       );
     }

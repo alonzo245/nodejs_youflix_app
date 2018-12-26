@@ -1,12 +1,19 @@
 .VideoBuilder {
   display: grid;
-  grid-row-gap: 15px;
-  grid-column-gap: 10px;
+  grid-row-gap: 20px;
+  grid-column-gap: 1px;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  margin: 18px 0px 0px 22px;
+  justify-items: center;
+  align-items: center;
+  margin: 0 auto;
   width: 99%;
 
-  @media (min-width: 576px) {
+  @media (min-width: 360px) {
+    & {
+      justify-items: center;
+      align-items: center;
+      margin: 0 auto;
+    }
   }
 
   @media (min-width: 768px) {
@@ -31,16 +38,16 @@
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     margin: 13px auto;
     width: 94%;
-  
+
     @media (min-width: 576px) {
     }
-  
+
     @media (min-width: 768px) {
     }
-  
+
     @media (min-width: 992px) {
     }
-  
+
     @media (min-width: 1200px) {
       & {
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
