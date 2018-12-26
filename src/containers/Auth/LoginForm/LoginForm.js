@@ -94,6 +94,7 @@ class LoginForm extends Component {
 
     return (
       <div className="LoginForm">
+      <h4 className="title">Login</h4>
         <form onSubmit={this.submitHandler} >
           {authRedirect}
           {form}
