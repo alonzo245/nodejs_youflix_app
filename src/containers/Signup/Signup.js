@@ -14,9 +14,9 @@ class Signup extends Component {
         class: 'form-control',
         elementConfig: {
           type: 'text',
-          placeholder: 'Full Name'
+          placeholder: 'Tell us your name'
         },
-        value: 'alonzo',
+        value: '',
         validation: {
           required: true
         },
@@ -28,9 +28,9 @@ class Signup extends Component {
         class: 'form-control',
         elementConfig: {
           type: 'email',
-          placeholder: 'Mail Address'
+          placeholder: 'What\'s youe Email'
         },
-        value: 'alon@alush.com',
+        value: '',
         validation: {
           required: true,
           isEmail: true
@@ -43,9 +43,9 @@ class Signup extends Component {
         class: 'form-control',
         elementConfig: {
           type: 'password',
-          placeholder: 'Password'
+          placeholder: 'Enter a password'
         },
-        value: '1234567890',
+        value: '',
         validation: {
           required: true,
           minLength: 6

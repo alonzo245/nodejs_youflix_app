@@ -13,9 +13,9 @@ class LoginForm extends Component {
         elementType: 'input',
         elementConfig: {
           type: 'email',
-          placeholder: 'Mail Address'
+          placeholder: 'Email'
         },
-        value: 'alon@alush.com',
+        value: '',
         validation: {
           required: true,
           isEmail: true
@@ -29,7 +29,7 @@ class LoginForm extends Component {
           type: 'password',
           placeholder: 'Password'
         },
-        value: '1234567890',
+        value: '',
         validation: {
           required: true,
           minLength: 6
