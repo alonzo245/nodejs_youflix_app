@@ -10,7 +10,7 @@ const About = (props) => (
       <p><strong>Alon Alush</strong></p>
       <p>
       <span>Project Source code =></span>
-        <a href="https://github.com/alonzo245/youflix" target="_blank">
+        <a href="https://github.com/alonzo245/youflix">
           <FaGithub />
         </a>
       </p>

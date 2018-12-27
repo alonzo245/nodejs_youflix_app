@@ -15,7 +15,7 @@ const Header = (props) => {
       </Link>
       <div className="NavWrapper">
         <div className="Navigation">
-          <Navigation />
+          <Navigation isAuth={props.isAuth} />
         </div>
         <div className="RightItems">
           <AuthButton clicked={props.login} isAuth={props.isAuth} />

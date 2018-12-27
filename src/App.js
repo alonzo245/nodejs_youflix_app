@@ -2,12 +2,20 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
+import asyncComponent from './hoc/asyncComponent/asyncComponent';
 import Layout from './hoc/Layout/Layout';
 import VideoBuilder from './containers/VideoBuilder/VideoBuilder';
-import About from './containers/About/About';
 import Signup from './containers/Signup/Signup';
 import Logout from './containers/Auth/Logout/Logout';
 import './App.scss';
+
+const asyncAbout = asyncComponent(() => {
+  return import('./containers/About/About');
+});
+
+const asyncSocial = asyncComponent(() => {
+  return import('./containers/Social/Social');
+});
 
 class App extends Component {
 
@@ -16,12 +24,16 @@ class App extends Component {
   }
 
   render() {
+    
     let routes = (
       <Route path="/signup" component={Signup} />
     );
     if (this.props.isAuthenticated) {
       routes = (
-        <Route path="/logout" component={Logout} />
+        <Switch>
+          <Route path="/logout" component={Logout} />
+          <Route path="/social" component={asyncSocial} />
+        </Switch>
       );
     }
     return (
@@ -36,10 +48,7 @@ class App extends Component {
               path='/'
               render={() => <VideoBuilder toggleLayoutScroll={this.props.onToggleLayoutScroll} />}
             />
-            <Route
-              path='/about'
-              component={About}
-            />
+            <Route path='/about' component={asyncAbout} />
             {routes}
             {this.props.children}
           </Switch>

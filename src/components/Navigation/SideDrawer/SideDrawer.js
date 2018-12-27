@@ -21,7 +21,7 @@ const sideDrawer = (props) => {
                     <MdClose className="CloseSidrawer" />
                     <Toggle toggleTheme={props.toggleTheme} />
                 </div>
-                <Navigation />
+                <Navigation isAuth={props.isAuth} />
                 <div className="Version">
                     <AuthButton clicked={props.login} isAuth={props.isAuth} />
                     Ver.1.0

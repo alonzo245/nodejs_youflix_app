@@ -15,7 +15,7 @@ class LoginForm extends Component {
           type: 'email',
           placeholder: 'Email'
         },
-        value: '',
+        value: 'alon@alush.com',
         validation: {
           required: true,
           isEmail: true
@@ -29,7 +29,7 @@ class LoginForm extends Component {
           type: 'password',
           placeholder: 'Password'
         },
-        value: '',
+        value: '1234567890',
         validation: {
           required: true,
           minLength: 6
@@ -54,7 +54,7 @@ class LoginForm extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, true);
+    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, false);
   }
 
   componentDidMount() {
@@ -69,7 +69,7 @@ class LoginForm extends Component {
 
     if (this.props.authRedirectPath && this.props.isAuthenticated ) {
       authRedirect = <Redirect to="/" />;
-      this.props.modalClosed()
+      this.props.modalClosed();
     }
 
     const formElementsArray = [];
