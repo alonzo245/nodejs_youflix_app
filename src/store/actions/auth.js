@@ -55,7 +55,7 @@ export const auth = (email = null, password = null, name = null, isSignup = fals
             password: password
         };
 
-        let baseUrl = 'https://flixapi.herokuapp.com';
+        let baseUrl = 'https://youflixapi.herokuapp.com';
         if (window.location.hostname === "localhost") {
             baseUrl = window.location.protocol + '//localhost:8000';
         }

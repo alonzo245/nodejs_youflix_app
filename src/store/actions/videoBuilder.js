@@ -64,7 +64,7 @@ export const initVideos = (category, page = 1, flushVideos = false) => {
       dispatch(flushVideosItems());
     }
 
-    let baseUrl = 'https://flixapi.herokuapp.com';
+    let baseUrl = 'https://youflixapi.herokuapp.com';
     if (window.location.hostname === "localhost") {
       baseUrl = window.location.protocol + '//localhost:8000';
     }
