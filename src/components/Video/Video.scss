@@ -7,6 +7,24 @@
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 
+  .PlayerIcon {
+    display: block;
+    margin: 63% auto;
+    font-size: 96px;
+    color: rgb(255, 255, 255);
+    opacity: 0.3;
+  }
+
+  @media (max-width: 1200px) {
+    & .PlayerIcon {
+      display: block;
+      margin: 32% auto;
+      font-size: 96px;
+      color: white;
+      opacity: 0.5;
+    }
+  }
+
   @media (min-width: 1200px) {
     & {
       height: 390px;
@@ -97,6 +115,19 @@
         margin: 0px;
         font-size: 17px;
         -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+
+    @media (max-width: 576px) {
+      & .Date {
+        margin-left: 1px;
+        width: 97%;
+        opacity: 1;
+        transition: all 0.3s ease-in-out;
+      }
+      &:hover > .Title {
+        opacity: 1;
         transition: all 0.3s ease-in-out;
       }
     }
@@ -194,8 +225,6 @@
       color: green;
       transform: scale(1.6);
       transition: all 0.3s ease-in-out;
-
-      
     }
 
     .VideoData {
@@ -221,7 +250,7 @@
         /* white-space: nowrap; */
         overflow: hidden;
         text-overflow: ellipsis;
-  
+
         .Info {
           margin: 0px 6px 0px 0px;
           font-size: 17px;
@@ -230,7 +259,7 @@
           transition: all 0.3s ease-in-out;
         }
       }
-  
+
       .Date {
         display: inline-block;
         text-align: left;
@@ -242,7 +271,7 @@
         align-self: flex-end;
         opacity: 0;
         transition: all 0.3s ease-in-out;
-  
+
         .GoClock {
           margin: 0px;
           font-size: 17px;
@@ -251,25 +280,34 @@
         }
       }
 
-      &:hover > .Date,
-      &:hover > .Title {
-        opacity: 1;
-        transition: all 0.3s ease-in-out;
+      @media (max-width: 521px) {
+        & .Date {
+          margin-left: 1px;
+          width: 97%;
+          opacity: 1;
+          transition: all 0.3s ease-in-out;
+        }
+        & .Title {
+          opacity: 1;
+          transition: all 0.3s ease-in-out;
+          margin-bottom: 0px;
+          height: 47px;
+        }
       }
     }
 
     .VideoImage {
       z-index: 4;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center 0px;
-    -webkit-transform: scale(1.4);
-    transform: scale(1.4);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center 0px;
+      -webkit-transform: scale(1.4);
+      transform: scale(1.4);
     }
 
     .VideoPlayerWrapper {

@@ -1,0 +1,80 @@
+.Social {
+  margin-top: 95px;
+  height: 100%;
+  display: grid;
+  // grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: auto 500px auto;
+  grid-template-rows: repeat(5, minmax(100px, auto));
+  grid-template-areas:
+    ". . ."
+    ". box ."
+    ". box ."
+    ". box ."
+    ". . .";
+
+  @media (max-width: 576px) {
+    grid-template-columns: auto 80% auto;
+    grid-template-rows: repeat(3, minmax(100px, auto));
+    grid-template-areas:
+      ". box ."
+      ". box ."
+      ". box ."
+  }
+
+  .Box {
+    color: white;
+    background-image: linear-gradient(180deg, red, rgb(77, 0, 0));
+    grid-area: box;
+    border-radius: 8px;
+
+    font-family: monospace;
+    font-size: 1.4rem;
+
+    p {
+      text-align: center;
+      margin-bottom: 0.4rem;
+
+      &:first-child {
+        margin-top: 80px;
+      }
+      a {
+        color: white;
+        font-size: 22px;
+        transform: scale(1);
+        margin-left: 9px;
+        transition: 0.3s linear, color 1s linear;
+        &:hover {
+          color: black;
+          transform: scale(0.7);
+          transition: 0.3s linear, color 1s linear;
+        }
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .Box1 {
+    background-color: wheat;
+    grid-area: box1;
+    height: 300px;
+  }
+
+  .Box2 {
+    background-color: pink;
+    grid-area: box2;
+    height: 300px;
+  }
+
+  .Box3 {
+    background-color: green;
+    grid-area: box3;
+  }
+
+  .Box4 {
+    background-color: darkblue;
+    grid-area: box4;
+  }
+}

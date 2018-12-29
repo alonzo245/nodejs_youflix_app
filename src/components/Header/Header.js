@@ -1,20 +1,28 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './Header.scss';
 import Navigation from '../Navigation/Navigation';
-import Logo from './images/logo.png';
-import Toggle from '../UI/Toggle/Toggle';
+import Logo from '../../assets/images/youflix.png';
+import AuthButton from '../UI/AuthButton/AuthButton';
+import DrawerToggle from '../Navigation/SideDrawer/DrawerToggle/DrawerToggle';
+const Header = (props) => {
 
-const Header = (props) => (
-  <header className="Header">
-    <img className="LogoImage" src={Logo} alt="YOUFLIX" />
-    <div className="NavWrapper">
-      <Navigation />
-      <div className="RightItems">
-        <Toggle toggleTheme={props.toggleTheme} />
-        {/* Ver.1.0 */}
+  return (
+    <header className="Header">
+      <DrawerToggle clicked={props.drawerToggleClicked} />
+      <Link to="/">
+        <img className="LogoImage" src={Logo} alt="YOUFLIX" />
+      </Link>
+      <div className="NavWrapper">
+        <div className="Navigation">
+          <Navigation isAuth={props.isAuth} />
+        </div>
+        <div className="RightItems">
+          <AuthButton clicked={props.login} isAuth={props.isAuth} />
+        </div>
       </div>
-    </div>
-  </header>
-);
+    </header>
+  )
+};
 
 export default Header;

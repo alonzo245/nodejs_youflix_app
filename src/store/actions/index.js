@@ -3,8 +3,15 @@ export {
   initVideos,
   setVideos,
   fetchVideosFailed,
-  searchVideo
+  searchVideo,
+  setCurrentPage
 } from './videoBuilder';
 export {
   toggleLayoutScroll
 } from './app';
+export {
+  auth,
+  logout,
+  setAuthRedirectPath,
+  authCheckState
+} from './auth';
