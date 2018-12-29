@@ -1,6 +1,7 @@
 .Social {
   max-width: 800px;
   margin: 85px auto 0px auto;
+  color: white;
 
   /* W3.CSS 4.12 Novemberr 2018 by Jan Egil and Borge Refsnes */
   html {
@@ -285,7 +286,7 @@
     overflow: hidden;
     text-decoration: none;
     color: inherit;
-    background-color: #ccc;
+    background-color: rgb(187, 0, 0);
     text-align: center;
     cursor: pointer;
     white-space: nowrap;
@@ -386,7 +387,7 @@
   }
   .w3-dropdown-hover:hover > .w3-button,
   .w3-dropdown-click:hover > .w3-button:first-child {
-    background-color: #ccc;
+    background-color: rgb(153, 0, 0);
     color: #000;
   }
   .w3-dropdown-content {
@@ -1187,7 +1188,7 @@
   }
   .w3-button:hover {
     color: #000 !important;
-    background-color: #ccc !important;
+    background-color: rgb(175, 0, 0) !important;
   }
   .w3-transparent,
   .w3-hover-none:hover {
@@ -1306,8 +1307,8 @@
   }
   .w3-white,
   .w3-hover-white:hover {
-    color: #000 !important;
-    background-color: #fff !important;
+    color: rgb(255, 255, 255) !important;
+    background-color: #313131 !important;
   }
   .w3-black,
   .w3-hover-black:hover {
