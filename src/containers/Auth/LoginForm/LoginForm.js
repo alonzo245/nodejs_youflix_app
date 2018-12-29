@@ -58,18 +58,28 @@ class LoginForm extends Component {
   }
 
   componentDidMount() {
+    if (this.props.authRedirectPath && this.props.isAuthenticated) {
+      this.props.modalClosed();
+    }
+
     if (this.props.authRedirectPath !== '/') {
       this.props.onSetAuthRedirectPath();
     }
+  }
+
+  componentDidUpdate() {
+    if (this.props.authRedirectPath && this.props.isAuthenticated) {
+      this.props.modalClosed();
+    }
+
   }
 
   render() {
 
     let authRedirect = null;
 
-    if (this.props.authRedirectPath && this.props.isAuthenticated ) {
+    if (this.props.authRedirectPath && this.props.isAuthenticated) {
       authRedirect = <Redirect to="/" />;
-      this.props.modalClosed();
     }
 
     const formElementsArray = [];
@@ -94,7 +104,7 @@ class LoginForm extends Component {
 
     return (
       <div className="LoginForm">
-      <h4 className="title">Login</h4>
+        <h4 className="title">Login</h4>
         <form onSubmit={this.submitHandler} >
           {authRedirect}
           {form}

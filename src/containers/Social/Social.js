@@ -9,7 +9,7 @@ const Social = (props) => (
         <div className="w3-card-2 w3-round w3-white">
           <div className="w3-container w3-padding">
             <h6 className="w3-opacity">Social Media template by </h6>
-            <p contenteditable="true" className="w3-border w3-padding">What Your Feeling...?</p>
+            <p className="w3-border w3-padding">What Your Feeling...?</p>
             <button type="button" className="w3-button w3-theme"><i className="fa fa-pencil"></i> &nbsp;Post</button>
           </div>
         </div>
