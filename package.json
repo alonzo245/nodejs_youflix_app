@@ -69,9 +69,10 @@
     "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "start": "node index.js",
     "test": "node scripts/test.js",
+    "build": "node scripts/build.js",
+    "start:local": "node scripts/start.js",
     "deploy": "npm run build && firebase deploy"
   },
   "eslintConfig": {
