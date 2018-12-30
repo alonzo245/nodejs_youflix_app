@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{123:function(e,a,n){},128:function(e,a,n){"use strict";n.r(a);var c=n(1),t=n.n(c);n(123);a.default=function(e){return t.a.createElement("div",{className:"Social"},t.a.createElement("div",{className:"Box"},t.a.createElement("p",null,"Social"),t.a.createElement("span",null,"Project Source code =>")))}}}]);
-//# sourceMappingURL=2.2538acda.chunk.js.map

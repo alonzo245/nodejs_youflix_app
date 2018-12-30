@@ -1,40 +1,78 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from '../../axios';
 import './Social.scss';
-import Logo from '../../../src/assets/images/youflix.png';
+import WritePost from '../../components/WritePost/WritePost';
+import Post from '../../components/Post/Post';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
-const Social = (props) => (
-  <div className="Social">
-    <div className="w3-row-padding">
-      <div className="w3-col m12">
-        <div className="w3-card-2 w3-round w3-white">
-          <div className="w3-container w3-padding">
-            <h6 className="w3-opacity">Social Media template by </h6>
-            <p className="w3-border w3-padding">What Your Feeling...?</p>
-            <button type="button" className="w3-button w3-theme"><i className="fa fa-pencil"></i> &nbsp;Post</button>
-          </div>
-        </div>
-      </div>
-    </div>
+class Social extends Component {
+  state = {
+    posts: [],
+    totalPosts: 0,
+    updatePosts: false
+  }
 
 
-    <div className="w3-container w3-card-2 w3-white w3-round w3-margin"><br />
-      <img src={Logo} alt="Avatar" className="w3-left w3-circle w3-margin-right" style={{ "width": "60px" }} />
-      <span className="w3-right w3-opacity">1 min</span>
-      <h4>John Doe</h4><br />
-      <hr className="w3-clear" />
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <div className="w3-row-padding" style={{ "margin": "0 -16px" }}>
-        <div className="w3-half">
-          <img src={Logo}style={{ "width": "100%" }} alt="Northern Lights" className="w3-margin-bottom" />
+  handleUpdatePosts = () => {
+    console.log('this.state.updatePosts', this.state.updatePosts)
+    this.updatePosts()
+  }
+
+  updatePosts() {
+    console.log('sss')
+    const token = localStorage.getItem('token');
+    if (token) {
+      const url = "http://localhost:8000/feed/posts";
+      const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      }
+      axios.get(url, null, headers)
+        .then(res => {
+
+          this.setState({
+            ...this.state,
+            posts: res.data.posts,
+            totlaPosts: res.data.totlaItems
+          })
+          console.log(res.data.posts[0])
+        })
+        .catch(err => {
+          console.log('err', err)
+        });
+    }
+  }
+  componentDidMount() {
+    this.updatePosts()
+  }
+
+  render() {
+    { const ddd = this.state.updatePosts ? null : null }
+    if (!this.state.posts.length) {
+      return (
+        <div className="Social">
+          <WritePost />
+          <Spinner />
         </div>
-        <div className="w3-half">
-          <img src={Logo} style={{ "width": "100%" }} alt="Nature" className="w3-margin-bottom" />
+      );
+    }
+    else {
+      return (
+        <div className="Social">
+          <WritePost updatePosts={this.handleUpdatePosts} />
+          {this.state.posts.map((post, index) => {
+            return <Post
+              key={index}
+              createdAt={post.createdAt}
+              content={post.content}
+              comments={post.comments}
+              creator={post.creator}
+            />
+          })}
         </div>
-      </div>
-      <button type="button" className="w3-button w3-theme-d1 w3-margin-bottom"><i className="fa fa-thumbs-up"></i> Like</button>
-      <button type="button" className="w3-button w3-theme-d2 w3-margin-bottom"><i className="fa fa-comment"></i>Comment</button>
-    </div>
-  </div>
-);
+      )
+    }
+  }
+};
 
 export default Social;
