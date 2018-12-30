@@ -22,7 +22,13 @@ class Social extends Component {
     console.log('sss')
     const token = localStorage.getItem('token');
     if (token) {
-      const url = "http://localhost:8000/feed/posts";
+      
+      let baseUrl = 'https://youflixapi.herokuapp.com';
+      if (window.location.hostname === "localhost") {
+        baseUrl = window.location.protocol + '//localhost:8000';
+      }
+      let url = baseUrl + '/feed/posts';
+      
       const headers = {
         'Content-Type': 'application/json',
         'Authorization': token

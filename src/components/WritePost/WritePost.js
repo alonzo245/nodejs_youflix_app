@@ -16,13 +16,17 @@ class WritePost extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     let that = this;
-    // console.log('this.state.postAdded', this.state.postAdded)
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
-    // console.log('this.state.postContent', this.state.postContent)
     if (token && userId) {
+
+      let baseUrl = 'https://youflixapi.herokuapp.com';
+      if (window.location.hostname === "localhost") {
+        baseUrl = window.location.protocol + '//localhost:8000';
+      }
+
       const authOptions = {
-        url: 'http://localhost:8000/feed/post',
+        url: baseUrl + '/feed/post',
         method: 'POST',
         data:
         {
